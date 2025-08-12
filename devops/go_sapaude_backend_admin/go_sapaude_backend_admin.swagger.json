@@ -184,7 +184,6 @@
         },
         "createdAt": {
           "type": "string",
-          "format": "int64",
           "title": "Unix timestamp"
         }
       },

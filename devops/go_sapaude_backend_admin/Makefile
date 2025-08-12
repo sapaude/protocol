@@ -3,6 +3,8 @@ PROTO_FILE=./go_sapaude_backend_admin.proto
 
 .PHONY: build-grpc build-grpc-gateway build-swagger build-all commit clean update
 
+build-all: build-grpc build-grpc-gateway build-swagger
+
 build-grpc:
 	protoc -I. -I$(GoogleAPIsPATH) \
 		--go_out=. --go_opt=paths=source_relative \
@@ -20,8 +22,6 @@ build-swagger:
 	protoc -I. -I$(GoogleAPIsPATH) \
 		--openapiv2_out=. --openapiv2_opt=logtostderr=true \
 		$(PROTO_FILE)
-
-build-all: build-grpc build-grpc-gateway build-swagger
 
 commit:
 	go mod tidy

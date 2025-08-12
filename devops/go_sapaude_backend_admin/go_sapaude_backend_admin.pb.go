@@ -28,7 +28,7 @@ type User struct {
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	Uname         string                 `protobuf:"bytes,2,opt,name=uname,proto3" json:"uname,omitempty"`
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // Unix timestamp
+	CreatedAt     string                 `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // Unix timestamp
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -84,11 +84,11 @@ func (x *User) GetEmail() string {
 	return ""
 }
 
-func (x *User) GetCreatedAt() int64 {
+func (x *User) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
 	}
-	return 0
+	return ""
 }
 
 // 注册用户请求
@@ -401,7 +401,7 @@ const file_go_sapaude_backend_admin_proto_rawDesc = "" +
 	"\x05uname\x18\x02 \x01(\tR\x05uname\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\x03R\tcreatedAt\"Y\n" +
+	"created_at\x18\x04 \x01(\tR\tcreatedAt\"Y\n" +
 	"\x0fRegisterUserReq\x12\x14\n" +
 	"\x05uname\x18\x01 \x01(\tR\x05uname\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
