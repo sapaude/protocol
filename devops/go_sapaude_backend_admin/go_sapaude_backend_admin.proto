@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package go_sapaude_backend_admin;
+
+option go_package = "github.com/sapaude/protocol/devops/go_sapaude_backend_admin";
+
+// 导入 Google API 定义，用于 HTTP 规则
+import "google/api/annotations.proto";
+
+// 用户信息
+message User {
+  string uid = 1;
+  string uname = 2;
+  string email = 3;
+  int64 created_at = 4; // Unix timestamp
+}
+
+// 注册用户请求
+message RegisterUserReq {
+  string uname = 1;
+  string email = 2;
+  string password = 3;
+}
+
+// 注册用户响应
+message RegisterUserRsp {
+  User user = 1;
+}
+
+// 获取用户请求
+message GetUserReq {
+  string uid = 1;
+}
+
+// 获取用户响应
+message GetUserResponseRsp {
+  User user = 1;
+}
+
+message LoginReq {
+  string uname = 1;
+  string email = 2;
+  string password = 3;
+}
+message LoginRsp {
+  string token = 1;
+}
+
+// 用户服务定义
+service GoSapaudeBackendAdmin {
+
+  // 登录
+  rpc Login(LoginReq) returns (LoginRsp) {
+    option (google.api.http) = {
+      post: "/users/login" // 定义 HTTP POST 请求到 /users/login
+      body: "*" // 请求体包含所有字段
+    };
+  }
+
+  // 注册用户
+  rpc RegisterUser(RegisterUserReq) returns (RegisterUserRsp) {
+    option (google.api.http) = {
+      post: "/users/register" // 定义 HTTP POST 请求到 /users/register
+      body: "*"
+    };
+  }
+
+  // 获取用户
+  rpc GetUser(GetUserReq) returns (GetUserResponseRsp) {
+    option (google.api.http) = {
+      get: "/users/{uid}" // 定义 HTTP GET 请求到 /users/{uid}
+    };
+  }
+}
