@@ -12,7 +12,7 @@ message User {
   string uid = 1;
   string uname = 2;
   string email = 3;
-  string created_at = 4; // Unix timestamp
+  string created_at = 4;
 }
 
 // 注册用户请求

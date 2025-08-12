@@ -183,8 +183,7 @@
           "type": "string"
         },
         "createdAt": {
-          "type": "string",
-          "title": "Unix timestamp"
+          "type": "string"
         }
       },
       "title": "用户信息"
