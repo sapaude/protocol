@@ -26,12 +26,13 @@ clean:
 	rm -f *.pb.go
 	rm -f *.swagger.json
 
-commit:
+commit-push:
 	go mod tidy
 	git add .
 	git status
 	git commit -am '--feat: update pb'
+	git push
 
 build-all: build-grpc build-grpc-gateway build-swagger
 
-update: clean build-all commit
+update: clean build-all commit-push
