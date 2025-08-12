@@ -1,7 +1,7 @@
 GoogleAPIsPATH=/private/data/projects/github.com/sapaude/protocol/third_party/googleapis
 PROTO_FILE=./go_sapaude_backend_admin.proto
 
-.PHONY: build-grpc build-grpc-gateway build-swagger commit clean
+.PHONY: build-grpc build-grpc-gateway build-swagger build-all commit clean update
 
 build-grpc:
 	protoc -I. -I$(GoogleAPIsPATH) \
@@ -21,6 +21,8 @@ build-swagger:
 		--openapiv2_out=. --openapiv2_opt=logtostderr=true \
 		$(PROTO_FILE)
 
+build-all: build-grpc build-grpc-gateway build-swagger
+
 commit:
 	go mod tidy
 	git add .
@@ -31,3 +33,5 @@ clean:
 	# 根据实际生成文件路径调整
 	rm -f *.pb.go
 	rm -f *.swagger.json
+
+update: clean build-all commit
