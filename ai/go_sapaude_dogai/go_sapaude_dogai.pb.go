@@ -114,14 +114,22 @@ var File_go_sapaude_dogai_proto protoreflect.FileDescriptor
 
 const file_go_sapaude_dogai_proto_rawDesc = "" +
 	"\n" +
-	"\x16go_sapaude_dogai.proto\x12\x10go_sapaude_dogai\x1a\x1cgoogle/api/annotations.proto\"8\n" +
+	"\x16go_sapaude_dogai.proto\x12\x10go_sapaude_dogai\x1a\x1cgoogle/api/annotations.proto\x1a\x0esettings.proto\x1a\x0eprovider.proto\x1a\vagent.proto\"8\n" +
 	"\x15GetAvailableModelsReq\x12\x1f\n" +
 	"\vprovider_id\x18\x01 \x01(\tR\n" +
 	"providerId\"/\n" +
 	"\x15GetAvailableModelsRsp\x12\x16\n" +
-	"\x06models\x18\x01 \x03(\tR\x06models2\x91\x01\n" +
-	"\x0eGoSapaudeDogAI\x12\x7f\n" +
-	"\x12GetAvailableModels\x12'.go_sapaude_dogai.GetAvailableModelsReq\x1a'.go_sapaude_dogai.GetAvailableModelsRsp\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/users/loginB1Z/github.com/sapaude/protocol/ai/go_sapaude_dogaib\x06proto3"
+	"\x06models\x18\x01 \x03(\tR\x06models2\xb3\t\n" +
+	"\x0eGoSapaudeDogAI\x12\x83\x01\n" +
+	"\x12GetGeneralSettings\x12'.go_sapaude_dogai.GetGeneralSettingsReq\x1a'.go_sapaude_dogai.GetGeneralSettingsRsp\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/GetGeneralSettings\x12\x8a\x01\n" +
+	"\x13SaveGeneralSettings\x12(.go_sapaude_dogai.SaveGeneralSettingsReq\x1a(.go_sapaude_dogai.SaveGeneralSettingsRsp\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/SaveGeneralSettings\x12n\n" +
+	"\fSaveProvider\x12!.go_sapaude_dogai.SaveProviderReq\x1a!.go_sapaude_dogai.SaveProviderRsp\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/SaveProvider\x12v\n" +
+	"\x0eUpdateProvider\x12#.go_sapaude_dogai.UpdateProviderReq\x1a#.go_sapaude_dogai.UpdateProviderRsp\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/UpdateProvider\x12~\n" +
+	"\x10GetProviderLists\x12%.go_sapaude_dogai.GetProviderListsReq\x1a%.go_sapaude_dogai.GetProviderListsRsp\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/GetProviderLists\x12u\n" +
+	"\vGetProvider\x12 .go_sapaude_dogai.GetProviderReq\x1a .go_sapaude_dogai.GetProviderRsp\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/GetProvider/{provider_id}\x12z\n" +
+	"\x0fDeleteProviders\x12$.go_sapaude_dogai.DeleteProvidersReq\x1a$.go_sapaude_dogai.DeleteProvidersRsp\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/DeleteProviders\x12\xa9\x01\n" +
+	"\x18GetProviderSupportModels\x12-.go_sapaude_dogai.GetProviderSupportModelsReq\x1a-.go_sapaude_dogai.GetProviderSupportModelsRsp\"/\x82\xd3\xe4\x93\x02)\x12'/GetProviderSupportModels/{provider_id}\x12\x86\x01\n" +
+	"\x12GetAvailableModels\x12'.go_sapaude_dogai.GetAvailableModelsReq\x1a'.go_sapaude_dogai.GetAvailableModelsRsp\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/GetAvailableModelsB1Z/github.com/sapaude/protocol/ai/go_sapaude_dogaib\x06proto3"
 
 var (
 	file_go_sapaude_dogai_proto_rawDescOnce sync.Once
@@ -137,17 +145,49 @@ func file_go_sapaude_dogai_proto_rawDescGZIP() []byte {
 
 var file_go_sapaude_dogai_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_go_sapaude_dogai_proto_goTypes = []any{
-	(*GetAvailableModelsReq)(nil), // 0: go_sapaude_dogai.GetAvailableModelsReq
-	(*GetAvailableModelsRsp)(nil), // 1: go_sapaude_dogai.GetAvailableModelsRsp
+	(*GetAvailableModelsReq)(nil),       // 0: go_sapaude_dogai.GetAvailableModelsReq
+	(*GetAvailableModelsRsp)(nil),       // 1: go_sapaude_dogai.GetAvailableModelsRsp
+	(*GetGeneralSettingsReq)(nil),       // 2: go_sapaude_dogai.GetGeneralSettingsReq
+	(*SaveGeneralSettingsReq)(nil),      // 3: go_sapaude_dogai.SaveGeneralSettingsReq
+	(*SaveProviderReq)(nil),             // 4: go_sapaude_dogai.SaveProviderReq
+	(*UpdateProviderReq)(nil),           // 5: go_sapaude_dogai.UpdateProviderReq
+	(*GetProviderListsReq)(nil),         // 6: go_sapaude_dogai.GetProviderListsReq
+	(*GetProviderReq)(nil),              // 7: go_sapaude_dogai.GetProviderReq
+	(*DeleteProvidersReq)(nil),          // 8: go_sapaude_dogai.DeleteProvidersReq
+	(*GetProviderSupportModelsReq)(nil), // 9: go_sapaude_dogai.GetProviderSupportModelsReq
+	(*GetGeneralSettingsRsp)(nil),       // 10: go_sapaude_dogai.GetGeneralSettingsRsp
+	(*SaveGeneralSettingsRsp)(nil),      // 11: go_sapaude_dogai.SaveGeneralSettingsRsp
+	(*SaveProviderRsp)(nil),             // 12: go_sapaude_dogai.SaveProviderRsp
+	(*UpdateProviderRsp)(nil),           // 13: go_sapaude_dogai.UpdateProviderRsp
+	(*GetProviderListsRsp)(nil),         // 14: go_sapaude_dogai.GetProviderListsRsp
+	(*GetProviderRsp)(nil),              // 15: go_sapaude_dogai.GetProviderRsp
+	(*DeleteProvidersRsp)(nil),          // 16: go_sapaude_dogai.DeleteProvidersRsp
+	(*GetProviderSupportModelsRsp)(nil), // 17: go_sapaude_dogai.GetProviderSupportModelsRsp
 }
 var file_go_sapaude_dogai_proto_depIdxs = []int32{
-	0, // 0: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:input_type -> go_sapaude_dogai.GetAvailableModelsReq
-	1, // 1: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:output_type -> go_sapaude_dogai.GetAvailableModelsRsp
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2,  // 0: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:input_type -> go_sapaude_dogai.GetGeneralSettingsReq
+	3,  // 1: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:input_type -> go_sapaude_dogai.SaveGeneralSettingsReq
+	4,  // 2: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:input_type -> go_sapaude_dogai.SaveProviderReq
+	5,  // 3: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:input_type -> go_sapaude_dogai.UpdateProviderReq
+	6,  // 4: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:input_type -> go_sapaude_dogai.GetProviderListsReq
+	7,  // 5: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:input_type -> go_sapaude_dogai.GetProviderReq
+	8,  // 6: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:input_type -> go_sapaude_dogai.DeleteProvidersReq
+	9,  // 7: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:input_type -> go_sapaude_dogai.GetProviderSupportModelsReq
+	0,  // 8: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:input_type -> go_sapaude_dogai.GetAvailableModelsReq
+	10, // 9: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:output_type -> go_sapaude_dogai.GetGeneralSettingsRsp
+	11, // 10: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:output_type -> go_sapaude_dogai.SaveGeneralSettingsRsp
+	12, // 11: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:output_type -> go_sapaude_dogai.SaveProviderRsp
+	13, // 12: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:output_type -> go_sapaude_dogai.UpdateProviderRsp
+	14, // 13: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:output_type -> go_sapaude_dogai.GetProviderListsRsp
+	15, // 14: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:output_type -> go_sapaude_dogai.GetProviderRsp
+	16, // 15: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:output_type -> go_sapaude_dogai.DeleteProvidersRsp
+	17, // 16: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:output_type -> go_sapaude_dogai.GetProviderSupportModelsRsp
+	1,  // 17: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:output_type -> go_sapaude_dogai.GetAvailableModelsRsp
+	9,  // [9:18] is the sub-list for method output_type
+	0,  // [0:9] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_go_sapaude_dogai_proto_init() }
@@ -155,6 +195,9 @@ func file_go_sapaude_dogai_proto_init() {
 	if File_go_sapaude_dogai_proto != nil {
 		return
 	}
+	file_settings_proto_init()
+	file_provider_proto_init()
+	file_agent_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -19,7 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GoSapaudeDogAI_GetAvailableModels_FullMethodName = "/go_sapaude_dogai.GoSapaudeDogAI/GetAvailableModels"
+	GoSapaudeDogAI_GetGeneralSettings_FullMethodName       = "/go_sapaude_dogai.GoSapaudeDogAI/GetGeneralSettings"
+	GoSapaudeDogAI_SaveGeneralSettings_FullMethodName      = "/go_sapaude_dogai.GoSapaudeDogAI/SaveGeneralSettings"
+	GoSapaudeDogAI_SaveProvider_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/SaveProvider"
+	GoSapaudeDogAI_UpdateProvider_FullMethodName           = "/go_sapaude_dogai.GoSapaudeDogAI/UpdateProvider"
+	GoSapaudeDogAI_GetProviderLists_FullMethodName         = "/go_sapaude_dogai.GoSapaudeDogAI/GetProviderLists"
+	GoSapaudeDogAI_GetProvider_FullMethodName              = "/go_sapaude_dogai.GoSapaudeDogAI/GetProvider"
+	GoSapaudeDogAI_DeleteProviders_FullMethodName          = "/go_sapaude_dogai.GoSapaudeDogAI/DeleteProviders"
+	GoSapaudeDogAI_GetProviderSupportModels_FullMethodName = "/go_sapaude_dogai.GoSapaudeDogAI/GetProviderSupportModels"
+	GoSapaudeDogAI_GetAvailableModels_FullMethodName       = "/go_sapaude_dogai.GoSapaudeDogAI/GetAvailableModels"
 )
 
 // GoSapaudeDogAIClient is the client API for GoSapaudeDogAI service.
@@ -28,6 +36,21 @@ const (
 //
 // Sapaude DOGAI服务
 type GoSapaudeDogAIClient interface {
+	// ---- Setting配置  ----
+	GetGeneralSettings(ctx context.Context, in *GetGeneralSettingsReq, opts ...grpc.CallOption) (*GetGeneralSettingsRsp, error)
+	SaveGeneralSettings(ctx context.Context, in *SaveGeneralSettingsReq, opts ...grpc.CallOption) (*SaveGeneralSettingsRsp, error)
+	// 保存Provider配置
+	SaveProvider(ctx context.Context, in *SaveProviderReq, opts ...grpc.CallOption) (*SaveProviderRsp, error)
+	// 更新Provider配置
+	UpdateProvider(ctx context.Context, in *UpdateProviderReq, opts ...grpc.CallOption) (*UpdateProviderRsp, error)
+	// 查询Provider列表
+	GetProviderLists(ctx context.Context, in *GetProviderListsReq, opts ...grpc.CallOption) (*GetProviderListsRsp, error)
+	// 获取指定Provider配置
+	GetProvider(ctx context.Context, in *GetProviderReq, opts ...grpc.CallOption) (*GetProviderRsp, error)
+	// 删除指定的Providers
+	DeleteProviders(ctx context.Context, in *DeleteProvidersReq, opts ...grpc.CallOption) (*DeleteProvidersRsp, error)
+	// 获取Provider支持的模型列表
+	GetProviderSupportModels(ctx context.Context, in *GetProviderSupportModelsReq, opts ...grpc.CallOption) (*GetProviderSupportModelsRsp, error)
 	// 查询可用的模型
 	GetAvailableModels(ctx context.Context, in *GetAvailableModelsReq, opts ...grpc.CallOption) (*GetAvailableModelsRsp, error)
 }
@@ -38,6 +61,86 @@ type goSapaudeDogAIClient struct {
 
 func NewGoSapaudeDogAIClient(cc grpc.ClientConnInterface) GoSapaudeDogAIClient {
 	return &goSapaudeDogAIClient{cc}
+}
+
+func (c *goSapaudeDogAIClient) GetGeneralSettings(ctx context.Context, in *GetGeneralSettingsReq, opts ...grpc.CallOption) (*GetGeneralSettingsRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetGeneralSettingsRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_GetGeneralSettings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) SaveGeneralSettings(ctx context.Context, in *SaveGeneralSettingsReq, opts ...grpc.CallOption) (*SaveGeneralSettingsRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveGeneralSettingsRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_SaveGeneralSettings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) SaveProvider(ctx context.Context, in *SaveProviderReq, opts ...grpc.CallOption) (*SaveProviderRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveProviderRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_SaveProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) UpdateProvider(ctx context.Context, in *UpdateProviderReq, opts ...grpc.CallOption) (*UpdateProviderRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProviderRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_UpdateProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) GetProviderLists(ctx context.Context, in *GetProviderListsReq, opts ...grpc.CallOption) (*GetProviderListsRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProviderListsRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_GetProviderLists_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) GetProvider(ctx context.Context, in *GetProviderReq, opts ...grpc.CallOption) (*GetProviderRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProviderRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_GetProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) DeleteProviders(ctx context.Context, in *DeleteProvidersReq, opts ...grpc.CallOption) (*DeleteProvidersRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteProvidersRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_DeleteProviders_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *goSapaudeDogAIClient) GetProviderSupportModels(ctx context.Context, in *GetProviderSupportModelsReq, opts ...grpc.CallOption) (*GetProviderSupportModelsRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProviderSupportModelsRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_GetProviderSupportModels_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *goSapaudeDogAIClient) GetAvailableModels(ctx context.Context, in *GetAvailableModelsReq, opts ...grpc.CallOption) (*GetAvailableModelsRsp, error) {
@@ -56,6 +159,21 @@ func (c *goSapaudeDogAIClient) GetAvailableModels(ctx context.Context, in *GetAv
 //
 // Sapaude DOGAI服务
 type GoSapaudeDogAIServer interface {
+	// ---- Setting配置  ----
+	GetGeneralSettings(context.Context, *GetGeneralSettingsReq) (*GetGeneralSettingsRsp, error)
+	SaveGeneralSettings(context.Context, *SaveGeneralSettingsReq) (*SaveGeneralSettingsRsp, error)
+	// 保存Provider配置
+	SaveProvider(context.Context, *SaveProviderReq) (*SaveProviderRsp, error)
+	// 更新Provider配置
+	UpdateProvider(context.Context, *UpdateProviderReq) (*UpdateProviderRsp, error)
+	// 查询Provider列表
+	GetProviderLists(context.Context, *GetProviderListsReq) (*GetProviderListsRsp, error)
+	// 获取指定Provider配置
+	GetProvider(context.Context, *GetProviderReq) (*GetProviderRsp, error)
+	// 删除指定的Providers
+	DeleteProviders(context.Context, *DeleteProvidersReq) (*DeleteProvidersRsp, error)
+	// 获取Provider支持的模型列表
+	GetProviderSupportModels(context.Context, *GetProviderSupportModelsReq) (*GetProviderSupportModelsRsp, error)
 	// 查询可用的模型
 	GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error)
 	mustEmbedUnimplementedGoSapaudeDogAIServer()
@@ -68,6 +186,30 @@ type GoSapaudeDogAIServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGoSapaudeDogAIServer struct{}
 
+func (UnimplementedGoSapaudeDogAIServer) GetGeneralSettings(context.Context, *GetGeneralSettingsReq) (*GetGeneralSettingsRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGeneralSettings not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) SaveGeneralSettings(context.Context, *SaveGeneralSettingsReq) (*SaveGeneralSettingsRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SaveGeneralSettings not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) SaveProvider(context.Context, *SaveProviderReq) (*SaveProviderRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SaveProvider not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) UpdateProvider(context.Context, *UpdateProviderReq) (*UpdateProviderRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProvider not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) GetProviderLists(context.Context, *GetProviderListsReq) (*GetProviderListsRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProviderLists not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) GetProvider(context.Context, *GetProviderReq) (*GetProviderRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProvider not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) DeleteProviders(context.Context, *DeleteProvidersReq) (*DeleteProvidersRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProviders not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) GetProviderSupportModels(context.Context, *GetProviderSupportModelsReq) (*GetProviderSupportModelsRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProviderSupportModels not implemented")
+}
 func (UnimplementedGoSapaudeDogAIServer) GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAvailableModels not implemented")
 }
@@ -90,6 +232,150 @@ func RegisterGoSapaudeDogAIServer(s grpc.ServiceRegistrar, srv GoSapaudeDogAISer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&GoSapaudeDogAI_ServiceDesc, srv)
+}
+
+func _GoSapaudeDogAI_GetGeneralSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGeneralSettingsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).GetGeneralSettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_GetGeneralSettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).GetGeneralSettings(ctx, req.(*GetGeneralSettingsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_SaveGeneralSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveGeneralSettingsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).SaveGeneralSettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_SaveGeneralSettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).SaveGeneralSettings(ctx, req.(*SaveGeneralSettingsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_SaveProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveProviderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).SaveProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_SaveProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).SaveProvider(ctx, req.(*SaveProviderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_UpdateProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProviderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).UpdateProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_UpdateProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).UpdateProvider(ctx, req.(*UpdateProviderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_GetProviderLists_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProviderListsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).GetProviderLists(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_GetProviderLists_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).GetProviderLists(ctx, req.(*GetProviderListsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_GetProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProviderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).GetProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_GetProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).GetProvider(ctx, req.(*GetProviderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_DeleteProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProvidersReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).DeleteProviders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_DeleteProviders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).DeleteProviders(ctx, req.(*DeleteProvidersReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GoSapaudeDogAI_GetProviderSupportModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProviderSupportModelsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).GetProviderSupportModels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_GetProviderSupportModels_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).GetProviderSupportModels(ctx, req.(*GetProviderSupportModelsReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _GoSapaudeDogAI_GetAvailableModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -117,6 +403,38 @@ var GoSapaudeDogAI_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "go_sapaude_dogai.GoSapaudeDogAI",
 	HandlerType: (*GoSapaudeDogAIServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetGeneralSettings",
+			Handler:    _GoSapaudeDogAI_GetGeneralSettings_Handler,
+		},
+		{
+			MethodName: "SaveGeneralSettings",
+			Handler:    _GoSapaudeDogAI_SaveGeneralSettings_Handler,
+		},
+		{
+			MethodName: "SaveProvider",
+			Handler:    _GoSapaudeDogAI_SaveProvider_Handler,
+		},
+		{
+			MethodName: "UpdateProvider",
+			Handler:    _GoSapaudeDogAI_UpdateProvider_Handler,
+		},
+		{
+			MethodName: "GetProviderLists",
+			Handler:    _GoSapaudeDogAI_GetProviderLists_Handler,
+		},
+		{
+			MethodName: "GetProvider",
+			Handler:    _GoSapaudeDogAI_GetProvider_Handler,
+		},
+		{
+			MethodName: "DeleteProviders",
+			Handler:    _GoSapaudeDogAI_DeleteProviders_Handler,
+		},
+		{
+			MethodName: "GetProviderSupportModels",
+			Handler:    _GoSapaudeDogAI_GetProviderSupportModels_Handler,
+		},
 		{
 			MethodName: "GetAvailableModels",
 			Handler:    _GoSapaudeDogAI_GetAvailableModels_Handler,

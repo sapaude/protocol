@@ -3,21 +3,50 @@ syntax = "proto3";
 package go_sapaude_dogai;
 option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
 
-// 1. 获取配置
-message GetGeneralSettingsReq {
+// GeneralSetting 通用应用配置
+message GeneralSetting {
+  string theme = 1;              // 主题(light/dark/auto)
+  string language = 2;           // 语言(zh-CN/en-US等)
+  int32 chat_window_width = 3;   // 聊天窗口宽度
+  int32 chat_window_height = 4;  // 聊天窗口高度
+  bool always_on_top = 5;        // 是否窗口置顶
+  string proxy_url = 6;          // 代理URL
+}
 
+// LoadAppSettingsReq 加载应用配置请求
+message LoadAppSettingsReq {
+  // 无需参数，加载当前用户的配置
+}
+
+// LoadAppSettingsRsp 加载应用配置响应
+message LoadAppSettingsRsp {
+  GeneralSetting settings = 1;
+}
+
+// SaveAppSettingsReq 保存应用配置请求
+message SaveAppSettingsReq {
+  GeneralSetting settings = 1;
+}
+
+// SaveAppSettingsRsp 保存应用配置响应
+message SaveAppSettingsRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
+}
+
+// 兼容旧命名的请求响应消息(保持向后兼容)
+message GetGeneralSettingsReq {
+  // 无需参数
 }
 
 message GetGeneralSettingsRsp {
-
+  GeneralSetting settings = 1;
 }
 
-// 2. 保存配置
-message SaveGeneralSettingsReq{
-
+message SaveGeneralSettingsReq {
+  GeneralSetting settings = 1;
 }
 
-message SaveGeneralSettingsRsp{
-
+message SaveGeneralSettingsRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
 }
 
