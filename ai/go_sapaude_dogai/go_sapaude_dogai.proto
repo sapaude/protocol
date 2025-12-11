@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// 导入 Google API 定义，用于 HTTP 规则
+import "google/api/annotations.proto";
+
+message GetAvailableModelsReq {
+  string provider_id = 1;  // Provider 唯一标识
+}
+
+message GetAvailableModelsRsp {
+  repeated string models = 1;  // 可用的模型ID列表
+}
+
+// Sapaude DOGAI服务
+service GoSapaudeDogAI {
+
+  // ---- Setting配置  ----
+
+  // ---- Provider 配置  ----
+
+  // ---- Agent 配置  ----
+
+  // ---- AI 操作接口 ----
+
+  // 查询可用的模型
+  rpc GetAvailableModels(GetAvailableModelsReq) returns (GetAvailableModelsRsp){
+    option (google.api.http) = {
+      post: "/users/login" // 定义 HTTP POST 请求到 /users/login
+      body: "*" // 请求体包含所有字段
+    };
+  }
+
+  //  // 登录
+  //  rpc Login(LoginReq) returns (LoginRsp) {
+  //    option (google.api.http) = {
+  //      post: "/users/login" // 定义 HTTP POST 请求到 /users/login
+  //      body: "*" // 请求体包含所有字段
+  //    };
+  //  }
+  //
+  //  // 注册用户
+  //  rpc RegisterUser(RegisterUserReq) returns (RegisterUserRsp) {
+  //    option (google.api.http) = {
+  //      post: "/users/register" // 定义 HTTP POST 请求到 /users/register
+  //      body: "*"
+  //    };
+  //  }
+  //
+  //  // 获取用户
+  //  rpc GetUser(GetUserReq) returns (GetUserResponseRsp) {
+  //    option (google.api.http) = {
+  //      get: "/users/{uid}" // 定义 HTTP GET 请求到 /users/{uid}
+  //    };
+  //  }
+}

@@ -1,0 +1,104 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "go_sapaude_dogai.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "GoSapaudeDogAI"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "summary": "查询可用的模型",
+        "operationId": "GoSapaudeDogAI_GetAvailableModels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetAvailableModelsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetAvailableModelsReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "go_sapaude_dogaiGetAvailableModelsReq": {
+      "type": "object",
+      "properties": {
+        "providerId": {
+          "type": "string",
+          "title": "Provider 唯一标识"
+        }
+      }
+    },
+    "go_sapaude_dogaiGetAvailableModelsRsp": {
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "可用的模型ID列表"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

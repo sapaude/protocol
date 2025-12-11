@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package go_sapaude_poems;
+option go_package = "github.com/sapaude/protocol/study/go_sapaude_poems";
+
+// 导入 Google API 定义，用于 HTTP 规则
+import "google/api/annotations.proto";
+
+
+// 罗列诗歌
+message ListPoemsReq {
+  repeated string Tags = 1;
+  string Category = 2;
+  string Author = 3;
+}
+
+message Poem {
+
+}
+message ListPoemsRsp {
+
+
+  repeated Poem Poems = 1;
+}
+
+// 用户服务定义
+service GoSapaudeBackendAdmin {
+
+  // 罗列所有的诗歌
+  rpc ListPoems(ListPoemsReq) returns (ListPoemsRsp) {
+    option (google.api.http) = {
+      post: "/poems/list" // 定义 HTTP POST 请求到 /users/login
+      body: "*" // 请求体包含所有字段
+    };
+  }
+
+}
