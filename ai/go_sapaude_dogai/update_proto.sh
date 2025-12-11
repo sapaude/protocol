@@ -1,30 +1,31 @@
 #!/bin/sh
-#protoc -I=. --go_out=. ./go_sapaude_dogai.proto
 
+# 全局配置
+PACKAGE_NAME="go_sapaude_dogai"
 GoogleAPIsPATH=/private/data/projects/github.com/sapaude/protocol/third_party/googleapis
 
-# 1. 生成 Go gRPC 代码
-protoc -I. \
-       -I$GoogleAPIsPATH \
-       --go_out=. \
-       --go_opt=paths=source_relative \
-       --go-grpc_out=. \
-       --go-grpc_opt=paths=source_relative \
-       ./go_sapaude_dogai.proto
+# 1. 编译消息定义文件 (排除主服务文件)
+for proto in *.proto; do
+    [ "$proto" != "${PACKAGE_NAME}.proto" ] && [ -f "$proto" ] && \
+        protoc -I. -I$GoogleAPIsPATH \
+            --go_out=. --go_opt=paths=source_relative \
+            ./$proto
+done
 
-# 2. 生成 Go gRPC-Gateway 代码
-protoc -I. \
-       -I$GoogleAPIsPATH \
-       --grpc-gateway_out=. \
-       --grpc-gateway_opt=paths=source_relative \
+# 2. 编译主服务文件 (gRPC + Gateway + OpenAPI)
+protoc -I. -I$GoogleAPIsPATH \
+       --go_out=. --go_opt=paths=source_relative \
+       --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+       ./${PACKAGE_NAME}.proto
+
+protoc -I. -I$GoogleAPIsPATH \
+       --grpc-gateway_out=. --grpc-gateway_opt=paths=source_relative \
        --grpc-gateway_opt=logtostderr=true \
-       ./go_sapaude_dogai.proto
+       ./${PACKAGE_NAME}.proto
 
-# 3. (可选) 生成 OpenAPI/Swagger 文档
-protoc -I. \
-       -I$GoogleAPIsPATH \
-       --openapiv2_out=. \
-       --openapiv2_opt=logtostderr=true \
-       ./go_sapaude_dogai.proto
+protoc -I. -I$GoogleAPIsPATH \
+       --openapiv2_out=. --openapiv2_opt=logtostderr=true \
+       ./${PACKAGE_NAME}.proto
 
+# 3. 整理依赖
 go mod tidy
