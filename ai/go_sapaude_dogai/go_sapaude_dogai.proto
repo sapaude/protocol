@@ -1,11 +1,13 @@
 syntax = "proto3";
 
 package go_sapaude_dogai;
-
 option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
 
 // 导入 Google API 定义，用于 HTTP 规则
 import "google/api/annotations.proto";
+import "settings.proto";
+import "provider.proto";
+import "agent.proto";
 
 message GetAvailableModelsReq {
   string provider_id = 1;  // Provider 唯一标识
@@ -19,8 +21,20 @@ message GetAvailableModelsRsp {
 service GoSapaudeDogAI {
 
   // ---- Setting配置  ----
+  rpc GetGeneralSettings(GetGeneralSettingsReq) returns (GetGeneralSettingsRsp) {
+    option (google.api.http) = {
+      get: "/GetGeneralSettings"
+    };
+  }
+  rpc SaveGeneralSettings(SaveGeneralSettingsReq) returns (SaveGeneralSettingsRsp) {
+    option (google.api.http) = {
+      post: "/SaveGeneralSettings"
+      body: "*"
+    };
+  }
 
   // ---- Provider 配置  ----
+
 
   // ---- Agent 配置  ----
 
@@ -29,8 +43,8 @@ service GoSapaudeDogAI {
   // 查询可用的模型
   rpc GetAvailableModels(GetAvailableModelsReq) returns (GetAvailableModelsRsp){
     option (google.api.http) = {
-      post: "/users/login" // 定义 HTTP POST 请求到 /users/login
-      body: "*" // 请求体包含所有字段
+      post: "/GetAvailableModels"
+      body: "*"
     };
   }
 

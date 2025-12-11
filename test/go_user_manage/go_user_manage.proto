@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// 导入 Google API 定义，用于 HTTP 规则
+import "google/api/annotations.proto";
+
+
+// User 消息定义
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+// 请求消息
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message ListUsersRequest {}
+
+// 响应消息
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+// UserService 服务定义
+service UserService {
+  // 创建用户
+  rpc CreateUser(CreateUserRequest) returns (User) {
+    option (google.api.http) = {
+      post: "/v1/users"
+      body: "*"
+    };
+  }
+
+  // 获取单个用户
+  rpc GetUser(GetUserRequest) returns (User) {
+    option (google.api.http) = {
+      get: "/v1/users/{id}"
+    };
+  }
+
+  // 更新用户
+  rpc UpdateUser(UpdateUserRequest) returns (User) {
+    option (google.api.http) = {
+      put: "/v1/users/{id}"
+      body: "*"
+    };
+  }
+
+  // 删除用户
+  rpc DeleteUser(DeleteUserRequest) returns (User) {
+    option (google.api.http) = {
+      delete: "/v1/users/{id}"
+    };
+  }
+
+  // 列出所有用户
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
+    option (google.api.http) = {
+      get: "/v1/users"
+    };
+  }
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// 1. 获取配置
+message GetGeneralSettingsReq {
+
+}
+
+message GetGeneralSettingsRsp {
+
+}
+
+// 2. 保存配置
+message SaveGeneralSettingsReq{
+
+}
+
+message SaveGeneralSettingsRsp{
+
+}
+
