@@ -34,5 +34,6 @@ protoc -I. -I$GoogleAPIsPATH \
 go mod tidy
 
 # 4. git commit
+echo "git commit & push..."
 git commit -am '--feat: update protobuf'
 git push
