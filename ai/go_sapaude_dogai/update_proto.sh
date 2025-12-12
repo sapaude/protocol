@@ -35,5 +35,6 @@ go mod tidy
 
 # 4. git commit
 echo "git commit & push..."
+git add .
 git commit -am '--feat: update protobuf'
 git push
