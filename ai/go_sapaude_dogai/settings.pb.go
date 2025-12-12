@@ -106,170 +106,6 @@ func (x *GeneralSetting) GetProxyUrl() string {
 	return ""
 }
 
-// LoadAppSettingsReq 加载应用配置请求
-type LoadAppSettingsReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LoadAppSettingsReq) Reset() {
-	*x = LoadAppSettingsReq{}
-	mi := &file_settings_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LoadAppSettingsReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LoadAppSettingsReq) ProtoMessage() {}
-
-func (x *LoadAppSettingsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LoadAppSettingsReq.ProtoReflect.Descriptor instead.
-func (*LoadAppSettingsReq) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{1}
-}
-
-// LoadAppSettingsRsp 加载应用配置响应
-type LoadAppSettingsRsp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Settings      *GeneralSetting        `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LoadAppSettingsRsp) Reset() {
-	*x = LoadAppSettingsRsp{}
-	mi := &file_settings_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LoadAppSettingsRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LoadAppSettingsRsp) ProtoMessage() {}
-
-func (x *LoadAppSettingsRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LoadAppSettingsRsp.ProtoReflect.Descriptor instead.
-func (*LoadAppSettingsRsp) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *LoadAppSettingsRsp) GetSettings() *GeneralSetting {
-	if x != nil {
-		return x.Settings
-	}
-	return nil
-}
-
-// SaveAppSettingsReq 保存应用配置请求
-type SaveAppSettingsReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Settings      *GeneralSetting        `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SaveAppSettingsReq) Reset() {
-	*x = SaveAppSettingsReq{}
-	mi := &file_settings_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SaveAppSettingsReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SaveAppSettingsReq) ProtoMessage() {}
-
-func (x *SaveAppSettingsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SaveAppSettingsReq.ProtoReflect.Descriptor instead.
-func (*SaveAppSettingsReq) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *SaveAppSettingsReq) GetSettings() *GeneralSetting {
-	if x != nil {
-		return x.Settings
-	}
-	return nil
-}
-
-// SaveAppSettingsRsp 保存应用配置响应
-type SaveAppSettingsRsp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SaveAppSettingsRsp) Reset() {
-	*x = SaveAppSettingsRsp{}
-	mi := &file_settings_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SaveAppSettingsRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SaveAppSettingsRsp) ProtoMessage() {}
-
-func (x *SaveAppSettingsRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SaveAppSettingsRsp.ProtoReflect.Descriptor instead.
-func (*SaveAppSettingsRsp) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{4}
-}
-
 // 兼容旧命名的请求响应消息(保持向后兼容)
 type GetGeneralSettingsReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -279,7 +115,7 @@ type GetGeneralSettingsReq struct {
 
 func (x *GetGeneralSettingsReq) Reset() {
 	*x = GetGeneralSettingsReq{}
-	mi := &file_settings_proto_msgTypes[5]
+	mi := &file_settings_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -291,7 +127,7 @@ func (x *GetGeneralSettingsReq) String() string {
 func (*GetGeneralSettingsReq) ProtoMessage() {}
 
 func (x *GetGeneralSettingsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[5]
+	mi := &file_settings_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -304,7 +140,7 @@ func (x *GetGeneralSettingsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGeneralSettingsReq.ProtoReflect.Descriptor instead.
 func (*GetGeneralSettingsReq) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{5}
+	return file_settings_proto_rawDescGZIP(), []int{1}
 }
 
 type GetGeneralSettingsRsp struct {
@@ -316,7 +152,7 @@ type GetGeneralSettingsRsp struct {
 
 func (x *GetGeneralSettingsRsp) Reset() {
 	*x = GetGeneralSettingsRsp{}
-	mi := &file_settings_proto_msgTypes[6]
+	mi := &file_settings_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +164,7 @@ func (x *GetGeneralSettingsRsp) String() string {
 func (*GetGeneralSettingsRsp) ProtoMessage() {}
 
 func (x *GetGeneralSettingsRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[6]
+	mi := &file_settings_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +177,7 @@ func (x *GetGeneralSettingsRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGeneralSettingsRsp.ProtoReflect.Descriptor instead.
 func (*GetGeneralSettingsRsp) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{6}
+	return file_settings_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetGeneralSettingsRsp) GetSettings() *GeneralSetting {
@@ -360,7 +196,7 @@ type SaveGeneralSettingsReq struct {
 
 func (x *SaveGeneralSettingsReq) Reset() {
 	*x = SaveGeneralSettingsReq{}
-	mi := &file_settings_proto_msgTypes[7]
+	mi := &file_settings_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -372,7 +208,7 @@ func (x *SaveGeneralSettingsReq) String() string {
 func (*SaveGeneralSettingsReq) ProtoMessage() {}
 
 func (x *SaveGeneralSettingsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[7]
+	mi := &file_settings_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -385,7 +221,7 @@ func (x *SaveGeneralSettingsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveGeneralSettingsReq.ProtoReflect.Descriptor instead.
 func (*SaveGeneralSettingsReq) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{7}
+	return file_settings_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SaveGeneralSettingsReq) GetSettings() *GeneralSetting {
@@ -403,7 +239,7 @@ type SaveGeneralSettingsRsp struct {
 
 func (x *SaveGeneralSettingsRsp) Reset() {
 	*x = SaveGeneralSettingsRsp{}
-	mi := &file_settings_proto_msgTypes[8]
+	mi := &file_settings_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -415,7 +251,7 @@ func (x *SaveGeneralSettingsRsp) String() string {
 func (*SaveGeneralSettingsRsp) ProtoMessage() {}
 
 func (x *SaveGeneralSettingsRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_settings_proto_msgTypes[8]
+	mi := &file_settings_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,7 +264,7 @@ func (x *SaveGeneralSettingsRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveGeneralSettingsRsp.ProtoReflect.Descriptor instead.
 func (*SaveGeneralSettingsRsp) Descriptor() ([]byte, []int) {
-	return file_settings_proto_rawDescGZIP(), []int{8}
+	return file_settings_proto_rawDescGZIP(), []int{4}
 }
 
 var File_settings_proto protoreflect.FileDescriptor
@@ -442,13 +278,7 @@ const file_settings_proto_rawDesc = "" +
 	"\x11chat_window_width\x18\x03 \x01(\x05R\x0fchatWindowWidth\x12,\n" +
 	"\x12chat_window_height\x18\x04 \x01(\x05R\x10chatWindowHeight\x12\"\n" +
 	"\ralways_on_top\x18\x05 \x01(\bR\valwaysOnTop\x12\x1b\n" +
-	"\tproxy_url\x18\x06 \x01(\tR\bproxyUrl\"\x14\n" +
-	"\x12LoadAppSettingsReq\"R\n" +
-	"\x12LoadAppSettingsRsp\x12<\n" +
-	"\bsettings\x18\x01 \x01(\v2 .go_sapaude_dogai.GeneralSettingR\bsettings\"R\n" +
-	"\x12SaveAppSettingsReq\x12<\n" +
-	"\bsettings\x18\x01 \x01(\v2 .go_sapaude_dogai.GeneralSettingR\bsettings\"\x14\n" +
-	"\x12SaveAppSettingsRsp\"\x17\n" +
+	"\tproxy_url\x18\x06 \x01(\tR\bproxyUrl\"\x17\n" +
 	"\x15GetGeneralSettingsReq\"U\n" +
 	"\x15GetGeneralSettingsRsp\x12<\n" +
 	"\bsettings\x18\x01 \x01(\v2 .go_sapaude_dogai.GeneralSettingR\bsettings\"V\n" +
@@ -468,28 +298,22 @@ func file_settings_proto_rawDescGZIP() []byte {
 	return file_settings_proto_rawDescData
 }
 
-var file_settings_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_settings_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_settings_proto_goTypes = []any{
 	(*GeneralSetting)(nil),         // 0: go_sapaude_dogai.GeneralSetting
-	(*LoadAppSettingsReq)(nil),     // 1: go_sapaude_dogai.LoadAppSettingsReq
-	(*LoadAppSettingsRsp)(nil),     // 2: go_sapaude_dogai.LoadAppSettingsRsp
-	(*SaveAppSettingsReq)(nil),     // 3: go_sapaude_dogai.SaveAppSettingsReq
-	(*SaveAppSettingsRsp)(nil),     // 4: go_sapaude_dogai.SaveAppSettingsRsp
-	(*GetGeneralSettingsReq)(nil),  // 5: go_sapaude_dogai.GetGeneralSettingsReq
-	(*GetGeneralSettingsRsp)(nil),  // 6: go_sapaude_dogai.GetGeneralSettingsRsp
-	(*SaveGeneralSettingsReq)(nil), // 7: go_sapaude_dogai.SaveGeneralSettingsReq
-	(*SaveGeneralSettingsRsp)(nil), // 8: go_sapaude_dogai.SaveGeneralSettingsRsp
+	(*GetGeneralSettingsReq)(nil),  // 1: go_sapaude_dogai.GetGeneralSettingsReq
+	(*GetGeneralSettingsRsp)(nil),  // 2: go_sapaude_dogai.GetGeneralSettingsRsp
+	(*SaveGeneralSettingsReq)(nil), // 3: go_sapaude_dogai.SaveGeneralSettingsReq
+	(*SaveGeneralSettingsRsp)(nil), // 4: go_sapaude_dogai.SaveGeneralSettingsRsp
 }
 var file_settings_proto_depIdxs = []int32{
-	0, // 0: go_sapaude_dogai.LoadAppSettingsRsp.settings:type_name -> go_sapaude_dogai.GeneralSetting
-	0, // 1: go_sapaude_dogai.SaveAppSettingsReq.settings:type_name -> go_sapaude_dogai.GeneralSetting
-	0, // 2: go_sapaude_dogai.GetGeneralSettingsRsp.settings:type_name -> go_sapaude_dogai.GeneralSetting
-	0, // 3: go_sapaude_dogai.SaveGeneralSettingsReq.settings:type_name -> go_sapaude_dogai.GeneralSetting
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0, // 0: go_sapaude_dogai.GetGeneralSettingsRsp.settings:type_name -> go_sapaude_dogai.GeneralSetting
+	0, // 1: go_sapaude_dogai.SaveGeneralSettingsReq.settings:type_name -> go_sapaude_dogai.GeneralSetting
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_settings_proto_init() }
@@ -503,7 +327,7 @@ func file_settings_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_settings_proto_rawDesc), len(file_settings_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

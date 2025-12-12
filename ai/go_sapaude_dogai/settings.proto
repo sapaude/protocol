@@ -13,26 +13,6 @@ message GeneralSetting {
   string proxy_url = 6;          // 代理URL
 }
 
-// LoadAppSettingsReq 加载应用配置请求
-message LoadAppSettingsReq {
-  // 无需参数，加载当前用户的配置
-}
-
-// LoadAppSettingsRsp 加载应用配置响应
-message LoadAppSettingsRsp {
-  GeneralSetting settings = 1;
-}
-
-// SaveAppSettingsReq 保存应用配置请求
-message SaveAppSettingsReq {
-  GeneralSetting settings = 1;
-}
-
-// SaveAppSettingsRsp 保存应用配置响应
-message SaveAppSettingsRsp {
-  // 空响应，通过grpc-gateway中间件统一处理
-}
-
 // 兼容旧命名的请求响应消息(保持向后兼容)
 message GetGeneralSettingsReq {
   // 无需参数
