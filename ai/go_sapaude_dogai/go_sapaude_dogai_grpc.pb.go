@@ -32,7 +32,6 @@ const (
 	GoSapaudeDogAI_GetAgentLists_FullMethodName            = "/go_sapaude_dogai.GoSapaudeDogAI/GetAgentLists"
 	GoSapaudeDogAI_GetAgent_FullMethodName                 = "/go_sapaude_dogai.GoSapaudeDogAI/GetAgent"
 	GoSapaudeDogAI_DeleteAgents_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/DeleteAgents"
-	GoSapaudeDogAI_GetAvailableModels_FullMethodName       = "/go_sapaude_dogai.GoSapaudeDogAI/GetAvailableModels"
 	GoSapaudeDogAI_CallAIStream_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/CallAIStream"
 )
 
@@ -68,8 +67,7 @@ type GoSapaudeDogAIClient interface {
 	GetAgent(ctx context.Context, in *GetAgentReq, opts ...grpc.CallOption) (*GetAgentRsp, error)
 	// 删除指定的Agents
 	DeleteAgents(ctx context.Context, in *DeleteAgentsReq, opts ...grpc.CallOption) (*DeleteAgentsRsp, error)
-	// 查询可用的模型
-	GetAvailableModels(ctx context.Context, in *GetAvailableModelsReq, opts ...grpc.CallOption) (*GetAvailableModelsRsp, error)
+	// ---- AI 操作接口 ----
 	// AI对话
 	CallAIStream(ctx context.Context, in *CallAIStreamReq, opts ...grpc.CallOption) (*CallAIStreamRsp, error)
 }
@@ -212,16 +210,6 @@ func (c *goSapaudeDogAIClient) DeleteAgents(ctx context.Context, in *DeleteAgent
 	return out, nil
 }
 
-func (c *goSapaudeDogAIClient) GetAvailableModels(ctx context.Context, in *GetAvailableModelsReq, opts ...grpc.CallOption) (*GetAvailableModelsRsp, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAvailableModelsRsp)
-	err := c.cc.Invoke(ctx, GoSapaudeDogAI_GetAvailableModels_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *goSapaudeDogAIClient) CallAIStream(ctx context.Context, in *CallAIStreamReq, opts ...grpc.CallOption) (*CallAIStreamRsp, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CallAIStreamRsp)
@@ -264,8 +252,7 @@ type GoSapaudeDogAIServer interface {
 	GetAgent(context.Context, *GetAgentReq) (*GetAgentRsp, error)
 	// 删除指定的Agents
 	DeleteAgents(context.Context, *DeleteAgentsReq) (*DeleteAgentsRsp, error)
-	// 查询可用的模型
-	GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error)
+	// ---- AI 操作接口 ----
 	// AI对话
 	CallAIStream(context.Context, *CallAIStreamReq) (*CallAIStreamRsp, error)
 	mustEmbedUnimplementedGoSapaudeDogAIServer()
@@ -316,9 +303,6 @@ func (UnimplementedGoSapaudeDogAIServer) GetAgent(context.Context, *GetAgentReq)
 }
 func (UnimplementedGoSapaudeDogAIServer) DeleteAgents(context.Context, *DeleteAgentsReq) (*DeleteAgentsRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgents not implemented")
-}
-func (UnimplementedGoSapaudeDogAIServer) GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAvailableModels not implemented")
 }
 func (UnimplementedGoSapaudeDogAIServer) CallAIStream(context.Context, *CallAIStreamReq) (*CallAIStreamRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CallAIStream not implemented")
@@ -578,24 +562,6 @@ func _GoSapaudeDogAI_DeleteAgents_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _GoSapaudeDogAI_GetAvailableModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAvailableModelsReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GoSapaudeDogAIServer).GetAvailableModels(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GoSapaudeDogAI_GetAvailableModels_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GoSapaudeDogAIServer).GetAvailableModels(ctx, req.(*GetAvailableModelsReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _GoSapaudeDogAI_CallAIStream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CallAIStreamReq)
 	if err := dec(in); err != nil {
@@ -672,10 +638,6 @@ var GoSapaudeDogAI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteAgents",
 			Handler:    _GoSapaudeDogAI_DeleteAgents_Handler,
-		},
-		{
-			MethodName: "GetAvailableModels",
-			Handler:    _GoSapaudeDogAI_GetAvailableModels_Handler,
 		},
 		{
 			MethodName: "CallAIStream",

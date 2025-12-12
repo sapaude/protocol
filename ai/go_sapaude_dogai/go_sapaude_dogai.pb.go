@@ -11,7 +11,6 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	sync "sync"
 	unsafe "unsafe"
 )
 
@@ -22,196 +21,11 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetAvailableModelsReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProviderId    string                 `protobuf:"bytes,1,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"` // Provider 唯一标识
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAvailableModelsReq) Reset() {
-	*x = GetAvailableModelsReq{}
-	mi := &file_go_sapaude_dogai_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAvailableModelsReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAvailableModelsReq) ProtoMessage() {}
-
-func (x *GetAvailableModelsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_go_sapaude_dogai_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAvailableModelsReq.ProtoReflect.Descriptor instead.
-func (*GetAvailableModelsReq) Descriptor() ([]byte, []int) {
-	return file_go_sapaude_dogai_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *GetAvailableModelsReq) GetProviderId() string {
-	if x != nil {
-		return x.ProviderId
-	}
-	return ""
-}
-
-type GetAvailableModelsRsp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Models        []string               `protobuf:"bytes,1,rep,name=models,proto3" json:"models,omitempty"` // 可用的模型ID列表
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAvailableModelsRsp) Reset() {
-	*x = GetAvailableModelsRsp{}
-	mi := &file_go_sapaude_dogai_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAvailableModelsRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAvailableModelsRsp) ProtoMessage() {}
-
-func (x *GetAvailableModelsRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_go_sapaude_dogai_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAvailableModelsRsp.ProtoReflect.Descriptor instead.
-func (*GetAvailableModelsRsp) Descriptor() ([]byte, []int) {
-	return file_go_sapaude_dogai_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *GetAvailableModelsRsp) GetModels() []string {
-	if x != nil {
-		return x.Models
-	}
-	return nil
-}
-
-type CallAIStreamReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"` // 用户选中的agent_id
-	Question      string                 `protobuf:"bytes,2,opt,name=question,proto3" json:"question,omitempty"`              // 用户问题
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CallAIStreamReq) Reset() {
-	*x = CallAIStreamReq{}
-	mi := &file_go_sapaude_dogai_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CallAIStreamReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CallAIStreamReq) ProtoMessage() {}
-
-func (x *CallAIStreamReq) ProtoReflect() protoreflect.Message {
-	mi := &file_go_sapaude_dogai_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CallAIStreamReq.ProtoReflect.Descriptor instead.
-func (*CallAIStreamReq) Descriptor() ([]byte, []int) {
-	return file_go_sapaude_dogai_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CallAIStreamReq) GetAgentId() string {
-	if x != nil {
-		return x.AgentId
-	}
-	return ""
-}
-
-func (x *CallAIStreamReq) GetQuestion() string {
-	if x != nil {
-		return x.Question
-	}
-	return ""
-}
-
-type CallAIStreamRsp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CallAIStreamRsp) Reset() {
-	*x = CallAIStreamRsp{}
-	mi := &file_go_sapaude_dogai_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CallAIStreamRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CallAIStreamRsp) ProtoMessage() {}
-
-func (x *CallAIStreamRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_go_sapaude_dogai_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CallAIStreamRsp.ProtoReflect.Descriptor instead.
-func (*CallAIStreamRsp) Descriptor() ([]byte, []int) {
-	return file_go_sapaude_dogai_proto_rawDescGZIP(), []int{3}
-}
-
 var File_go_sapaude_dogai_proto protoreflect.FileDescriptor
 
 const file_go_sapaude_dogai_proto_rawDesc = "" +
 	"\n" +
-	"\x16go_sapaude_dogai.proto\x12\x10go_sapaude_dogai\x1a\x1cgoogle/api/annotations.proto\x1a\x0esettings.proto\x1a\x0eprovider.proto\x1a\vagent.proto\"8\n" +
-	"\x15GetAvailableModelsReq\x12\x1f\n" +
-	"\vprovider_id\x18\x01 \x01(\tR\n" +
-	"providerId\"/\n" +
-	"\x15GetAvailableModelsRsp\x12\x16\n" +
-	"\x06models\x18\x01 \x03(\tR\x06models\"H\n" +
-	"\x0fCallAIStreamReq\x12\x19\n" +
-	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1a\n" +
-	"\bquestion\x18\x02 \x01(\tR\bquestion\"\x11\n" +
-	"\x0fCallAIStreamRsp2\xbf\x0e\n" +
+	"\x16go_sapaude_dogai.proto\x12\x10go_sapaude_dogai\x1a\x1cgoogle/api/annotations.proto\x1a\x0esettings.proto\x1a\x0eprovider.proto\x1a\vagent.proto\x1a\fdog_ai.proto2\xb6\r\n" +
 	"\x0eGoSapaudeDogAI\x12\x83\x01\n" +
 	"\x12GetGeneralSettings\x12'.go_sapaude_dogai.GetGeneralSettingsReq\x1a'.go_sapaude_dogai.GetGeneralSettingsRsp\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/GetGeneralSettings\x12\x8a\x01\n" +
 	"\x13SaveGeneralSettings\x12(.go_sapaude_dogai.SaveGeneralSettingsReq\x1a(.go_sapaude_dogai.SaveGeneralSettingsRsp\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/SaveGeneralSettings\x12n\n" +
@@ -226,88 +40,70 @@ const file_go_sapaude_dogai_proto_rawDesc = "" +
 	"\vUpdateAgent\x12 .go_sapaude_dogai.UpdateAgentReq\x1a .go_sapaude_dogai.UpdateAgentRsp\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/UpdateAgent\x12r\n" +
 	"\rGetAgentLists\x12\".go_sapaude_dogai.GetAgentListsReq\x1a\".go_sapaude_dogai.GetAgentListsRsp\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/GetAgentLists\x12f\n" +
 	"\bGetAgent\x12\x1d.go_sapaude_dogai.GetAgentReq\x1a\x1d.go_sapaude_dogai.GetAgentRsp\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/GetAgent/{agent_id}\x12n\n" +
-	"\fDeleteAgents\x12!.go_sapaude_dogai.DeleteAgentsReq\x1a!.go_sapaude_dogai.DeleteAgentsRsp\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/DeleteAgents\x12\x86\x01\n" +
-	"\x12GetAvailableModels\x12'.go_sapaude_dogai.GetAvailableModelsReq\x1a'.go_sapaude_dogai.GetAvailableModelsRsp\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/GetAvailableModels\x12n\n" +
+	"\fDeleteAgents\x12!.go_sapaude_dogai.DeleteAgentsReq\x1a!.go_sapaude_dogai.DeleteAgentsRsp\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/DeleteAgents\x12n\n" +
 	"\fCallAIStream\x12!.go_sapaude_dogai.CallAIStreamReq\x1a!.go_sapaude_dogai.CallAIStreamRsp\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/CallAIStreamB1Z/github.com/sapaude/protocol/ai/go_sapaude_dogaib\x06proto3"
 
-var (
-	file_go_sapaude_dogai_proto_rawDescOnce sync.Once
-	file_go_sapaude_dogai_proto_rawDescData []byte
-)
-
-func file_go_sapaude_dogai_proto_rawDescGZIP() []byte {
-	file_go_sapaude_dogai_proto_rawDescOnce.Do(func() {
-		file_go_sapaude_dogai_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_go_sapaude_dogai_proto_rawDesc), len(file_go_sapaude_dogai_proto_rawDesc)))
-	})
-	return file_go_sapaude_dogai_proto_rawDescData
-}
-
-var file_go_sapaude_dogai_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_go_sapaude_dogai_proto_goTypes = []any{
-	(*GetAvailableModelsReq)(nil),       // 0: go_sapaude_dogai.GetAvailableModelsReq
-	(*GetAvailableModelsRsp)(nil),       // 1: go_sapaude_dogai.GetAvailableModelsRsp
-	(*CallAIStreamReq)(nil),             // 2: go_sapaude_dogai.CallAIStreamReq
-	(*CallAIStreamRsp)(nil),             // 3: go_sapaude_dogai.CallAIStreamRsp
-	(*GetGeneralSettingsReq)(nil),       // 4: go_sapaude_dogai.GetGeneralSettingsReq
-	(*SaveGeneralSettingsReq)(nil),      // 5: go_sapaude_dogai.SaveGeneralSettingsReq
-	(*SaveProviderReq)(nil),             // 6: go_sapaude_dogai.SaveProviderReq
-	(*UpdateProviderReq)(nil),           // 7: go_sapaude_dogai.UpdateProviderReq
-	(*GetProviderListsReq)(nil),         // 8: go_sapaude_dogai.GetProviderListsReq
-	(*GetProviderReq)(nil),              // 9: go_sapaude_dogai.GetProviderReq
-	(*DeleteProvidersReq)(nil),          // 10: go_sapaude_dogai.DeleteProvidersReq
-	(*GetProviderSupportModelsReq)(nil), // 11: go_sapaude_dogai.GetProviderSupportModelsReq
-	(*SaveAgentReq)(nil),                // 12: go_sapaude_dogai.SaveAgentReq
-	(*UpdateAgentReq)(nil),              // 13: go_sapaude_dogai.UpdateAgentReq
-	(*GetAgentListsReq)(nil),            // 14: go_sapaude_dogai.GetAgentListsReq
-	(*GetAgentReq)(nil),                 // 15: go_sapaude_dogai.GetAgentReq
-	(*DeleteAgentsReq)(nil),             // 16: go_sapaude_dogai.DeleteAgentsReq
-	(*GetGeneralSettingsRsp)(nil),       // 17: go_sapaude_dogai.GetGeneralSettingsRsp
-	(*SaveGeneralSettingsRsp)(nil),      // 18: go_sapaude_dogai.SaveGeneralSettingsRsp
-	(*SaveProviderRsp)(nil),             // 19: go_sapaude_dogai.SaveProviderRsp
-	(*UpdateProviderRsp)(nil),           // 20: go_sapaude_dogai.UpdateProviderRsp
-	(*GetProviderListsRsp)(nil),         // 21: go_sapaude_dogai.GetProviderListsRsp
-	(*GetProviderRsp)(nil),              // 22: go_sapaude_dogai.GetProviderRsp
-	(*DeleteProvidersRsp)(nil),          // 23: go_sapaude_dogai.DeleteProvidersRsp
-	(*GetProviderSupportModelsRsp)(nil), // 24: go_sapaude_dogai.GetProviderSupportModelsRsp
-	(*SaveAgentRsp)(nil),                // 25: go_sapaude_dogai.SaveAgentRsp
-	(*UpdateAgentRsp)(nil),              // 26: go_sapaude_dogai.UpdateAgentRsp
-	(*GetAgentListsRsp)(nil),            // 27: go_sapaude_dogai.GetAgentListsRsp
-	(*GetAgentRsp)(nil),                 // 28: go_sapaude_dogai.GetAgentRsp
-	(*DeleteAgentsRsp)(nil),             // 29: go_sapaude_dogai.DeleteAgentsRsp
+	(*GetGeneralSettingsReq)(nil),       // 0: go_sapaude_dogai.GetGeneralSettingsReq
+	(*SaveGeneralSettingsReq)(nil),      // 1: go_sapaude_dogai.SaveGeneralSettingsReq
+	(*SaveProviderReq)(nil),             // 2: go_sapaude_dogai.SaveProviderReq
+	(*UpdateProviderReq)(nil),           // 3: go_sapaude_dogai.UpdateProviderReq
+	(*GetProviderListsReq)(nil),         // 4: go_sapaude_dogai.GetProviderListsReq
+	(*GetProviderReq)(nil),              // 5: go_sapaude_dogai.GetProviderReq
+	(*DeleteProvidersReq)(nil),          // 6: go_sapaude_dogai.DeleteProvidersReq
+	(*GetProviderSupportModelsReq)(nil), // 7: go_sapaude_dogai.GetProviderSupportModelsReq
+	(*SaveAgentReq)(nil),                // 8: go_sapaude_dogai.SaveAgentReq
+	(*UpdateAgentReq)(nil),              // 9: go_sapaude_dogai.UpdateAgentReq
+	(*GetAgentListsReq)(nil),            // 10: go_sapaude_dogai.GetAgentListsReq
+	(*GetAgentReq)(nil),                 // 11: go_sapaude_dogai.GetAgentReq
+	(*DeleteAgentsReq)(nil),             // 12: go_sapaude_dogai.DeleteAgentsReq
+	(*CallAIStreamReq)(nil),             // 13: go_sapaude_dogai.CallAIStreamReq
+	(*GetGeneralSettingsRsp)(nil),       // 14: go_sapaude_dogai.GetGeneralSettingsRsp
+	(*SaveGeneralSettingsRsp)(nil),      // 15: go_sapaude_dogai.SaveGeneralSettingsRsp
+	(*SaveProviderRsp)(nil),             // 16: go_sapaude_dogai.SaveProviderRsp
+	(*UpdateProviderRsp)(nil),           // 17: go_sapaude_dogai.UpdateProviderRsp
+	(*GetProviderListsRsp)(nil),         // 18: go_sapaude_dogai.GetProviderListsRsp
+	(*GetProviderRsp)(nil),              // 19: go_sapaude_dogai.GetProviderRsp
+	(*DeleteProvidersRsp)(nil),          // 20: go_sapaude_dogai.DeleteProvidersRsp
+	(*GetProviderSupportModelsRsp)(nil), // 21: go_sapaude_dogai.GetProviderSupportModelsRsp
+	(*SaveAgentRsp)(nil),                // 22: go_sapaude_dogai.SaveAgentRsp
+	(*UpdateAgentRsp)(nil),              // 23: go_sapaude_dogai.UpdateAgentRsp
+	(*GetAgentListsRsp)(nil),            // 24: go_sapaude_dogai.GetAgentListsRsp
+	(*GetAgentRsp)(nil),                 // 25: go_sapaude_dogai.GetAgentRsp
+	(*DeleteAgentsRsp)(nil),             // 26: go_sapaude_dogai.DeleteAgentsRsp
+	(*CallAIStreamRsp)(nil),             // 27: go_sapaude_dogai.CallAIStreamRsp
 }
 var file_go_sapaude_dogai_proto_depIdxs = []int32{
-	4,  // 0: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:input_type -> go_sapaude_dogai.GetGeneralSettingsReq
-	5,  // 1: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:input_type -> go_sapaude_dogai.SaveGeneralSettingsReq
-	6,  // 2: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:input_type -> go_sapaude_dogai.SaveProviderReq
-	7,  // 3: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:input_type -> go_sapaude_dogai.UpdateProviderReq
-	8,  // 4: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:input_type -> go_sapaude_dogai.GetProviderListsReq
-	9,  // 5: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:input_type -> go_sapaude_dogai.GetProviderReq
-	10, // 6: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:input_type -> go_sapaude_dogai.DeleteProvidersReq
-	11, // 7: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:input_type -> go_sapaude_dogai.GetProviderSupportModelsReq
-	12, // 8: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:input_type -> go_sapaude_dogai.SaveAgentReq
-	13, // 9: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:input_type -> go_sapaude_dogai.UpdateAgentReq
-	14, // 10: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:input_type -> go_sapaude_dogai.GetAgentListsReq
-	15, // 11: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:input_type -> go_sapaude_dogai.GetAgentReq
-	16, // 12: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:input_type -> go_sapaude_dogai.DeleteAgentsReq
-	0,  // 13: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:input_type -> go_sapaude_dogai.GetAvailableModelsReq
-	2,  // 14: go_sapaude_dogai.GoSapaudeDogAI.CallAIStream:input_type -> go_sapaude_dogai.CallAIStreamReq
-	17, // 15: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:output_type -> go_sapaude_dogai.GetGeneralSettingsRsp
-	18, // 16: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:output_type -> go_sapaude_dogai.SaveGeneralSettingsRsp
-	19, // 17: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:output_type -> go_sapaude_dogai.SaveProviderRsp
-	20, // 18: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:output_type -> go_sapaude_dogai.UpdateProviderRsp
-	21, // 19: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:output_type -> go_sapaude_dogai.GetProviderListsRsp
-	22, // 20: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:output_type -> go_sapaude_dogai.GetProviderRsp
-	23, // 21: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:output_type -> go_sapaude_dogai.DeleteProvidersRsp
-	24, // 22: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:output_type -> go_sapaude_dogai.GetProviderSupportModelsRsp
-	25, // 23: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:output_type -> go_sapaude_dogai.SaveAgentRsp
-	26, // 24: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:output_type -> go_sapaude_dogai.UpdateAgentRsp
-	27, // 25: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:output_type -> go_sapaude_dogai.GetAgentListsRsp
-	28, // 26: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:output_type -> go_sapaude_dogai.GetAgentRsp
-	29, // 27: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:output_type -> go_sapaude_dogai.DeleteAgentsRsp
-	1,  // 28: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:output_type -> go_sapaude_dogai.GetAvailableModelsRsp
-	3,  // 29: go_sapaude_dogai.GoSapaudeDogAI.CallAIStream:output_type -> go_sapaude_dogai.CallAIStreamRsp
-	15, // [15:30] is the sub-list for method output_type
-	0,  // [0:15] is the sub-list for method input_type
+	0,  // 0: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:input_type -> go_sapaude_dogai.GetGeneralSettingsReq
+	1,  // 1: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:input_type -> go_sapaude_dogai.SaveGeneralSettingsReq
+	2,  // 2: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:input_type -> go_sapaude_dogai.SaveProviderReq
+	3,  // 3: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:input_type -> go_sapaude_dogai.UpdateProviderReq
+	4,  // 4: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:input_type -> go_sapaude_dogai.GetProviderListsReq
+	5,  // 5: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:input_type -> go_sapaude_dogai.GetProviderReq
+	6,  // 6: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:input_type -> go_sapaude_dogai.DeleteProvidersReq
+	7,  // 7: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:input_type -> go_sapaude_dogai.GetProviderSupportModelsReq
+	8,  // 8: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:input_type -> go_sapaude_dogai.SaveAgentReq
+	9,  // 9: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:input_type -> go_sapaude_dogai.UpdateAgentReq
+	10, // 10: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:input_type -> go_sapaude_dogai.GetAgentListsReq
+	11, // 11: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:input_type -> go_sapaude_dogai.GetAgentReq
+	12, // 12: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:input_type -> go_sapaude_dogai.DeleteAgentsReq
+	13, // 13: go_sapaude_dogai.GoSapaudeDogAI.CallAIStream:input_type -> go_sapaude_dogai.CallAIStreamReq
+	14, // 14: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:output_type -> go_sapaude_dogai.GetGeneralSettingsRsp
+	15, // 15: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:output_type -> go_sapaude_dogai.SaveGeneralSettingsRsp
+	16, // 16: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:output_type -> go_sapaude_dogai.SaveProviderRsp
+	17, // 17: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:output_type -> go_sapaude_dogai.UpdateProviderRsp
+	18, // 18: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:output_type -> go_sapaude_dogai.GetProviderListsRsp
+	19, // 19: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:output_type -> go_sapaude_dogai.GetProviderRsp
+	20, // 20: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:output_type -> go_sapaude_dogai.DeleteProvidersRsp
+	21, // 21: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:output_type -> go_sapaude_dogai.GetProviderSupportModelsRsp
+	22, // 22: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:output_type -> go_sapaude_dogai.SaveAgentRsp
+	23, // 23: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:output_type -> go_sapaude_dogai.UpdateAgentRsp
+	24, // 24: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:output_type -> go_sapaude_dogai.GetAgentListsRsp
+	25, // 25: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:output_type -> go_sapaude_dogai.GetAgentRsp
+	26, // 26: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:output_type -> go_sapaude_dogai.DeleteAgentsRsp
+	27, // 27: go_sapaude_dogai.GoSapaudeDogAI.CallAIStream:output_type -> go_sapaude_dogai.CallAIStreamRsp
+	14, // [14:28] is the sub-list for method output_type
+	0,  // [0:14] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -321,19 +117,19 @@ func file_go_sapaude_dogai_proto_init() {
 	file_settings_proto_init()
 	file_provider_proto_init()
 	file_agent_proto_init()
+	file_dog_ai_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_go_sapaude_dogai_proto_rawDesc), len(file_go_sapaude_dogai_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_go_sapaude_dogai_proto_goTypes,
 		DependencyIndexes: file_go_sapaude_dogai_proto_depIdxs,
-		MessageInfos:      file_go_sapaude_dogai_proto_msgTypes,
 	}.Build()
 	File_go_sapaude_dogai_proto = out.File
 	file_go_sapaude_dogai_proto_goTypes = nil
