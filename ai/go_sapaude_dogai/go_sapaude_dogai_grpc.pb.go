@@ -33,6 +33,7 @@ const (
 	GoSapaudeDogAI_GetAgent_FullMethodName                 = "/go_sapaude_dogai.GoSapaudeDogAI/GetAgent"
 	GoSapaudeDogAI_DeleteAgents_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/DeleteAgents"
 	GoSapaudeDogAI_GetAvailableModels_FullMethodName       = "/go_sapaude_dogai.GoSapaudeDogAI/GetAvailableModels"
+	GoSapaudeDogAI_CallAIStream_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/CallAIStream"
 )
 
 // GoSapaudeDogAIClient is the client API for GoSapaudeDogAI service.
@@ -69,6 +70,8 @@ type GoSapaudeDogAIClient interface {
 	DeleteAgents(ctx context.Context, in *DeleteAgentsReq, opts ...grpc.CallOption) (*DeleteAgentsRsp, error)
 	// 查询可用的模型
 	GetAvailableModels(ctx context.Context, in *GetAvailableModelsReq, opts ...grpc.CallOption) (*GetAvailableModelsRsp, error)
+	// AI对话
+	CallAIStream(ctx context.Context, in *CallAIStreamReq, opts ...grpc.CallOption) (*CallAIStreamRsp, error)
 }
 
 type goSapaudeDogAIClient struct {
@@ -219,6 +222,16 @@ func (c *goSapaudeDogAIClient) GetAvailableModels(ctx context.Context, in *GetAv
 	return out, nil
 }
 
+func (c *goSapaudeDogAIClient) CallAIStream(ctx context.Context, in *CallAIStreamReq, opts ...grpc.CallOption) (*CallAIStreamRsp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CallAIStreamRsp)
+	err := c.cc.Invoke(ctx, GoSapaudeDogAI_CallAIStream_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GoSapaudeDogAIServer is the server API for GoSapaudeDogAI service.
 // All implementations must embed UnimplementedGoSapaudeDogAIServer
 // for forward compatibility.
@@ -253,6 +266,8 @@ type GoSapaudeDogAIServer interface {
 	DeleteAgents(context.Context, *DeleteAgentsReq) (*DeleteAgentsRsp, error)
 	// 查询可用的模型
 	GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error)
+	// AI对话
+	CallAIStream(context.Context, *CallAIStreamReq) (*CallAIStreamRsp, error)
 	mustEmbedUnimplementedGoSapaudeDogAIServer()
 }
 
@@ -304,6 +319,9 @@ func (UnimplementedGoSapaudeDogAIServer) DeleteAgents(context.Context, *DeleteAg
 }
 func (UnimplementedGoSapaudeDogAIServer) GetAvailableModels(context.Context, *GetAvailableModelsReq) (*GetAvailableModelsRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAvailableModels not implemented")
+}
+func (UnimplementedGoSapaudeDogAIServer) CallAIStream(context.Context, *CallAIStreamReq) (*CallAIStreamRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CallAIStream not implemented")
 }
 func (UnimplementedGoSapaudeDogAIServer) mustEmbedUnimplementedGoSapaudeDogAIServer() {}
 func (UnimplementedGoSapaudeDogAIServer) testEmbeddedByValue()                        {}
@@ -578,6 +596,24 @@ func _GoSapaudeDogAI_GetAvailableModels_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GoSapaudeDogAI_CallAIStream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CallAIStreamReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoSapaudeDogAIServer).CallAIStream(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoSapaudeDogAI_CallAIStream_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoSapaudeDogAIServer).CallAIStream(ctx, req.(*CallAIStreamReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GoSapaudeDogAI_ServiceDesc is the grpc.ServiceDesc for GoSapaudeDogAI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -640,6 +676,10 @@ var GoSapaudeDogAI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAvailableModels",
 			Handler:    _GoSapaudeDogAI_GetAvailableModels_Handler,
+		},
+		{
+			MethodName: "CallAIStream",
+			Handler:    _GoSapaudeDogAI_CallAIStream_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -16,6 +16,39 @@
     "application/json"
   ],
   "paths": {
+    "/CallAIStream": {
+      "post": {
+        "summary": "AI对话",
+        "operationId": "GoSapaudeDogAI_CallAIStream",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiCallAIStreamRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiCallAIStreamReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
     "/DeleteAgents": {
       "post": {
         "summary": "删除指定的Agents",
@@ -544,6 +577,22 @@
         }
       },
       "title": "Agent ReAct Agent配置"
+    },
+    "go_sapaude_dogaiCallAIStreamReq": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "title": "用户选中的agent_id"
+        },
+        "question": {
+          "type": "string",
+          "title": "用户问题"
+        }
+      }
+    },
+    "go_sapaude_dogaiCallAIStreamRsp": {
+      "type": "object"
     },
     "go_sapaude_dogaiCondAgent": {
       "type": "object",
