@@ -1,0 +1,1021 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "go_sapaude_dogai.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "GoSapaudeDogAI"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/CallAIStream": {
+      "post": {
+        "summary": "---- AI 操作接口 ----\nAI对话",
+        "operationId": "GoSapaudeDogAI_CallAIStream",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiCallAIStreamRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiCallAIStreamReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/DeleteAgents": {
+      "post": {
+        "summary": "删除指定的Agents",
+        "operationId": "GoSapaudeDogAI_DeleteAgents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiDeleteAgentsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiDeleteAgentsReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/DeleteProviders": {
+      "post": {
+        "summary": "删除指定的Providers",
+        "operationId": "GoSapaudeDogAI_DeleteProviders",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiDeleteProvidersRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiDeleteProvidersReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetAgent/{agentId}": {
+      "get": {
+        "summary": "获取指定Agent配置",
+        "operationId": "GoSapaudeDogAI_GetAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetAgentRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agentId",
+            "description": "Agent唯一标识",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetAgentLists": {
+      "post": {
+        "summary": "查询Agent列表",
+        "operationId": "GoSapaudeDogAI_GetAgentLists",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetAgentListsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetAgentListsReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetGeneralSettings": {
+      "get": {
+        "summary": "---- Setting配置  ----",
+        "operationId": "GoSapaudeDogAI_GetGeneralSettings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetGeneralSettingsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetProvider/{providerId}": {
+      "get": {
+        "summary": "获取指定Provider配置",
+        "operationId": "GoSapaudeDogAI_GetProvider",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetProviderRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "providerId",
+            "description": "Provider唯一标识",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetProviderLists": {
+      "post": {
+        "summary": "查询Provider列表",
+        "operationId": "GoSapaudeDogAI_GetProviderLists",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetProviderListsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetProviderListsReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/GetProviderSupportModels/{providerId}": {
+      "get": {
+        "summary": "获取Provider支持的模型列表",
+        "operationId": "GoSapaudeDogAI_GetProviderSupportModels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiGetProviderSupportModelsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "providerId",
+            "description": "Provider唯一标识",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/SaveAgent": {
+      "post": {
+        "summary": "保存Agent配置",
+        "operationId": "GoSapaudeDogAI_SaveAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveAgentRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveAgentReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/SaveGeneralSettings": {
+      "post": {
+        "summary": "保存通用配置(兼容旧接口)",
+        "operationId": "GoSapaudeDogAI_SaveGeneralSettings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveGeneralSettingsRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveGeneralSettingsReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/SaveProvider": {
+      "post": {
+        "summary": "保存Provider配置",
+        "operationId": "GoSapaudeDogAI_SaveProvider",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveProviderRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiSaveProviderReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/UpdateAgent": {
+      "post": {
+        "summary": "更新Agent配置",
+        "operationId": "GoSapaudeDogAI_UpdateAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiUpdateAgentRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiUpdateAgentReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    },
+    "/UpdateProvider": {
+      "post": {
+        "summary": "更新Provider配置",
+        "operationId": "GoSapaudeDogAI_UpdateProvider",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiUpdateProviderRsp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/go_sapaude_dogaiUpdateProviderReq"
+            }
+          }
+        ],
+        "tags": [
+          "GoSapaudeDogAI"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "go_sapaude_dogaiAgent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "title": "主键ID"
+        },
+        "agentId": {
+          "type": "string",
+          "title": "Agent唯一标识(eg. agent_0x1234)"
+        },
+        "agentName": {
+          "type": "string",
+          "title": "Agent名称"
+        },
+        "agentType": {
+          "type": "string",
+          "title": "Agent类型(ReAct)"
+        },
+        "description": {
+          "type": "string",
+          "title": "Agent描述"
+        },
+        "usingProviderId": {
+          "type": "string",
+          "title": "使用的Provider ID"
+        },
+        "usingModel": {
+          "type": "string",
+          "title": "使用的模型"
+        },
+        "sysPrompt": {
+          "type": "string",
+          "description": "系统提示词",
+          "title": "Prompt配置"
+        },
+        "aiPrompt": {
+          "type": "string",
+          "title": "AI助手提示词"
+        },
+        "model": {
+          "type": "string",
+          "description": "模型名称",
+          "title": "Model参数配置"
+        },
+        "temperature": {
+          "type": "number",
+          "format": "double",
+          "title": "温度参数(0.0-1.0)"
+        },
+        "maxTokens": {
+          "type": "integer",
+          "format": "int32",
+          "title": "最大token数"
+        },
+        "topP": {
+          "type": "number",
+          "format": "double",
+          "title": "Top P参数"
+        },
+        "topK": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Top K参数"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "创建时间",
+          "title": "时间戳"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        }
+      },
+      "title": "Agent ReAct Agent配置"
+    },
+    "go_sapaude_dogaiCallAIStreamReq": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "title": "用户选中的agent_id"
+        },
+        "question": {
+          "type": "string",
+          "title": "用户问题"
+        }
+      },
+      "title": "Call AI 流式请求"
+    },
+    "go_sapaude_dogaiCallAIStreamRsp": {
+      "type": "object"
+    },
+    "go_sapaude_dogaiCondAgent": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "title": "Agent唯一标识"
+        }
+      },
+      "title": "CondAgent Agent查询条件"
+    },
+    "go_sapaude_dogaiCondProvider": {
+      "type": "object",
+      "properties": {
+        "providerId": {
+          "type": "string",
+          "title": "Provider唯一标识"
+        }
+      },
+      "title": "CondProvider 查询Provider的条件"
+    },
+    "go_sapaude_dogaiDeleteAgentsReq": {
+      "type": "object",
+      "properties": {
+        "agentIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Agent唯一标识列表"
+        }
+      },
+      "title": "DeleteAgentsReq 删除Agents请求"
+    },
+    "go_sapaude_dogaiDeleteAgentsRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "DeleteAgentsRsp 删除Agents响应"
+    },
+    "go_sapaude_dogaiDeleteProvidersReq": {
+      "type": "object",
+      "properties": {
+        "providerIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Provider唯一标识列表"
+        }
+      },
+      "title": "DeleteProvidersReq 删除Providers请求"
+    },
+    "go_sapaude_dogaiDeleteProvidersRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "DeleteProvidersRsp 删除Providers响应"
+    },
+    "go_sapaude_dogaiGeneralSetting": {
+      "type": "object",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "title": "主题(light/dark/auto)"
+        },
+        "language": {
+          "type": "string",
+          "title": "语言(zh-CN/en-US等)"
+        },
+        "chatWindowWidth": {
+          "type": "integer",
+          "format": "int32",
+          "title": "聊天窗口宽度"
+        },
+        "chatWindowHeight": {
+          "type": "integer",
+          "format": "int32",
+          "title": "聊天窗口高度"
+        },
+        "alwaysOnTop": {
+          "type": "boolean",
+          "title": "是否窗口置顶"
+        },
+        "proxyUrl": {
+          "type": "string",
+          "title": "代理URL"
+        }
+      },
+      "title": "GeneralSetting 通用应用配置"
+    },
+    "go_sapaude_dogaiGetAgentListsReq": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/go_sapaude_dogaiCondAgent",
+          "title": "查询条件(可选)"
+        }
+      },
+      "title": "GetAgentListsReq 查询Agent列表请求"
+    },
+    "go_sapaude_dogaiGetAgentListsRsp": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/go_sapaude_dogaiAgent"
+          }
+        }
+      },
+      "title": "GetAgentListsRsp 查询Agent列表响应"
+    },
+    "go_sapaude_dogaiGetAgentRsp": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/go_sapaude_dogaiAgent"
+        }
+      },
+      "title": "GetAgentRsp 获取指定Agent响应"
+    },
+    "go_sapaude_dogaiGetGeneralSettingsRsp": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "$ref": "#/definitions/go_sapaude_dogaiGeneralSetting"
+        }
+      }
+    },
+    "go_sapaude_dogaiGetProviderListsReq": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/go_sapaude_dogaiCondProvider",
+          "title": "查询条件(可选)"
+        }
+      },
+      "title": "GetProviderListsReq 查询Provider列表请求"
+    },
+    "go_sapaude_dogaiGetProviderListsRsp": {
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/go_sapaude_dogaiProvider"
+          }
+        }
+      },
+      "title": "GetProviderListsRsp 查询Provider列表响应"
+    },
+    "go_sapaude_dogaiGetProviderRsp": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "#/definitions/go_sapaude_dogaiProvider"
+        }
+      },
+      "title": "GetProviderRsp 获取指定Provider响应"
+    },
+    "go_sapaude_dogaiGetProviderSupportModelsRsp": {
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/go_sapaude_dogaiProviderModel"
+          }
+        }
+      },
+      "title": "GetProviderSupportModelsRsp 获取Provider支持的模型列表响应"
+    },
+    "go_sapaude_dogaiModelCapability": {
+      "type": "object",
+      "properties": {
+        "chat": {
+          "type": "boolean",
+          "title": "支持聊天/对话"
+        },
+        "completion": {
+          "type": "boolean",
+          "title": "支持文本补全"
+        },
+        "vision": {
+          "type": "boolean",
+          "title": "支持图像输入"
+        },
+        "functionCall": {
+          "type": "boolean",
+          "title": "支持函数/工具调用"
+        },
+        "embedding": {
+          "type": "boolean",
+          "title": "支持嵌入"
+        },
+        "streaming": {
+          "type": "boolean",
+          "title": "支持流式输出"
+        }
+      },
+      "title": "ModelCapability 模型能力定义"
+    },
+    "go_sapaude_dogaiModelMetadata": {
+      "type": "object",
+      "properties": {
+        "contextWindow": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Token上下文窗口大小"
+        },
+        "maxOutputTokens": {
+          "type": "integer",
+          "format": "int32",
+          "title": "最大输出token数"
+        },
+        "version": {
+          "type": "string",
+          "title": "模型版本"
+        },
+        "family": {
+          "type": "string",
+          "title": "模型家族"
+        },
+        "supportsVision": {
+          "type": "boolean",
+          "title": "是否支持视觉"
+        },
+        "supportsTools": {
+          "type": "boolean",
+          "title": "是否支持工具"
+        }
+      },
+      "title": "ModelMetadata 模型元数据"
+    },
+    "go_sapaude_dogaiProvider": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "title": "主键ID"
+        },
+        "providerId": {
+          "type": "string",
+          "title": "Provider唯一标识"
+        },
+        "providerName": {
+          "type": "string",
+          "title": "Provider名称"
+        },
+        "apiEndpoint": {
+          "type": "string",
+          "title": "API端点地址"
+        },
+        "apiKey": {
+          "type": "string",
+          "title": "API密钥"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/go_sapaude_dogaiProviderModel"
+          },
+          "title": "可用模型列表"
+        },
+        "isAvailable": {
+          "type": "boolean",
+          "title": "API是否可用"
+        },
+        "isDisabled": {
+          "type": "boolean",
+          "title": "是否已禁用"
+        },
+        "proxyUrl": {
+          "type": "string",
+          "title": "代理URL"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        }
+      },
+      "title": "Provider AI提供商配置"
+    },
+    "go_sapaude_dogaiProviderModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "title": "主键ID"
+        },
+        "providerId": {
+          "type": "string",
+          "title": "Provider唯一标识"
+        },
+        "modelId": {
+          "type": "string",
+          "title": "模型ID"
+        },
+        "modelName": {
+          "type": "string",
+          "title": "模型名称"
+        },
+        "modelType": {
+          "type": "string",
+          "title": "模型类型(chat/embedding/vision)"
+        },
+        "releaseTime": {
+          "type": "string",
+          "title": "模型发布时间"
+        },
+        "modelDesc": {
+          "type": "string",
+          "title": "模型描述"
+        },
+        "capabilities": {
+          "$ref": "#/definitions/go_sapaude_dogaiModelCapability",
+          "title": "模型能力"
+        },
+        "metadata": {
+          "$ref": "#/definitions/go_sapaude_dogaiModelMetadata",
+          "title": "模型元数据"
+        },
+        "isActive": {
+          "type": "boolean",
+          "title": "模型是否可用"
+        },
+        "isDeprecated": {
+          "type": "boolean",
+          "title": "模型是否已废弃"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updatedAt": {
+          "type": "string",
+          "title": "更新时间"
+        }
+      },
+      "title": "ProviderModel Provider支持的模型"
+    },
+    "go_sapaude_dogaiSaveAgentReq": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/go_sapaude_dogaiAgent"
+        }
+      },
+      "title": "SaveAgentReq 保存Agent请求"
+    },
+    "go_sapaude_dogaiSaveAgentRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "SaveAgentRsp 保存Agent响应"
+    },
+    "go_sapaude_dogaiSaveGeneralSettingsReq": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "$ref": "#/definitions/go_sapaude_dogaiGeneralSetting"
+        }
+      }
+    },
+    "go_sapaude_dogaiSaveGeneralSettingsRsp": {
+      "type": "object",
+      "title": "空响应，通过grpc-gateway中间件统一处理"
+    },
+    "go_sapaude_dogaiSaveProviderReq": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "#/definitions/go_sapaude_dogaiProvider"
+        }
+      },
+      "title": "SaveProviderReq 保存Provider请求"
+    },
+    "go_sapaude_dogaiSaveProviderRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "SaveProviderRsp 保存Provider响应"
+    },
+    "go_sapaude_dogaiUpdateAgentReq": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "title": "Agent唯一标识"
+        },
+        "agent": {
+          "$ref": "#/definitions/go_sapaude_dogaiAgent",
+          "title": "更新的Agent信息"
+        }
+      },
+      "title": "UpdateAgentReq 更新Agent请求"
+    },
+    "go_sapaude_dogaiUpdateAgentRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "UpdateAgentRsp 更新Agent响应"
+    },
+    "go_sapaude_dogaiUpdateProviderReq": {
+      "type": "object",
+      "properties": {
+        "providerId": {
+          "type": "string",
+          "title": "Provider唯一标识"
+        },
+        "provider": {
+          "$ref": "#/definitions/go_sapaude_dogaiProvider",
+          "title": "更新的Provider信息"
+        }
+      },
+      "title": "UpdateProviderReq 更新Provider请求"
+    },
+    "go_sapaude_dogaiUpdateProviderRsp": {
+      "type": "object",
+      "description": "空响应，通过grpc-gateway中间件统一处理",
+      "title": "UpdateProviderRsp 更新Provider响应"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

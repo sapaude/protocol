@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// GeneralSetting 通用应用配置
+message GeneralSetting {
+  string theme = 1;              // 主题(light/dark/auto)
+  string language = 2;           // 语言(zh-CN/en-US等)
+  int32 chat_window_width = 3;   // 聊天窗口宽度
+  int32 chat_window_height = 4;  // 聊天窗口高度
+  bool always_on_top = 5;        // 是否窗口置顶
+  string proxy_url = 6;          // 代理URL
+}
+
+// 兼容旧命名的请求响应消息(保持向后兼容)
+message GetGeneralSettingsReq {
+  // 无需参数
+}
+
+message GetGeneralSettingsRsp {
+  GeneralSetting settings = 1;
+}
+
+message SaveGeneralSettingsReq {
+  GeneralSetting settings = 1;
+}
+
+message SaveGeneralSettingsRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
+}
+

@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// 导入 Google API 定义，用于 HTTP 规则
+import "google/api/annotations.proto";
+import "settings.proto";
+import "provider.proto";
+import "agent.proto";
+import "dog_ai.proto";
+
+// Sapaude DOGAI服务
+service GoSapaudeDogAI {
+
+  // ---- Setting配置  ----
+  rpc GetGeneralSettings(GetGeneralSettingsReq) returns (GetGeneralSettingsRsp) {
+    option (google.api.http) = {
+      get: "/GetGeneralSettings"
+    };
+  }
+
+  // 保存通用配置(兼容旧接口)
+  rpc SaveGeneralSettings(SaveGeneralSettingsReq) returns (SaveGeneralSettingsRsp) {
+    option (google.api.http) = {
+      post: "/SaveGeneralSettings"
+      body: "*"
+    };
+  }
+
+  // ---- Provider 配置  ----
+
+  // 保存Provider配置
+  rpc SaveProvider(SaveProviderReq) returns (SaveProviderRsp) {
+    option (google.api.http) = {
+      post: "/SaveProvider"
+      body: "*"
+    };
+  }
+
+  // 更新Provider配置
+  rpc UpdateProvider(UpdateProviderReq) returns (UpdateProviderRsp) {
+    option (google.api.http) = {
+      post: "/UpdateProvider"
+      body: "*"
+    };
+  }
+
+  // 查询Provider列表
+  rpc GetProviderLists(GetProviderListsReq) returns (GetProviderListsRsp) {
+    option (google.api.http) = {
+      post: "/GetProviderLists"
+      body: "*"
+    };
+  }
+
+  // 获取指定Provider配置
+  rpc GetProvider(GetProviderReq) returns (GetProviderRsp) {
+    option (google.api.http) = {
+      get: "/GetProvider/{provider_id}"
+    };
+  }
+
+  // 删除指定的Providers
+  rpc DeleteProviders(DeleteProvidersReq) returns (DeleteProvidersRsp) {
+    option (google.api.http) = {
+      post: "/DeleteProviders"
+      body: "*"
+    };
+  }
+
+  // 获取Provider支持的模型列表
+  rpc GetProviderSupportModels(GetProviderSupportModelsReq) returns (GetProviderSupportModelsRsp) {
+    option (google.api.http) = {
+      get: "/GetProviderSupportModels/{provider_id}"
+    };
+  }
+
+  // ---- Agent 配置  ----
+
+  // 保存Agent配置
+  rpc SaveAgent(SaveAgentReq) returns (SaveAgentRsp) {
+    option (google.api.http) = {
+      post: "/SaveAgent"
+      body: "*"
+    };
+  }
+
+  // 更新Agent配置
+  rpc UpdateAgent(UpdateAgentReq) returns (UpdateAgentRsp) {
+    option (google.api.http) = {
+      post: "/UpdateAgent"
+      body: "*"
+    };
+  }
+
+  // 查询Agent列表
+  rpc GetAgentLists(GetAgentListsReq) returns (GetAgentListsRsp) {
+    option (google.api.http) = {
+      post: "/GetAgentLists"
+      body: "*"
+    };
+  }
+
+  // 获取指定Agent配置
+  rpc GetAgent(GetAgentReq) returns (GetAgentRsp) {
+    option (google.api.http) = {
+      get: "/GetAgent/{agent_id}"
+    };
+  }
+
+  // 删除指定的Agents
+  rpc DeleteAgents(DeleteAgentsReq) returns (DeleteAgentsRsp) {
+    option (google.api.http) = {
+      post: "/DeleteAgents"
+      body: "*"
+    };
+  }
+
+  // ---- AI 操作接口 ----
+  // AI对话
+  rpc CallAIStream(CallAIStreamReq) returns (CallAIStreamRsp) {
+    option (google.api.http) = {
+      post: "/CallAIStream"
+      body: "*"
+    };
+  }
+}

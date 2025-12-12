@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package go_sapaude_dogai;
+option go_package = "github.com/sapaude/protocol/ai/go_sapaude_dogai";
+
+// AgentType Agent类型枚举
+enum AgentType {
+  AGENT_TYPE_UNSPECIFIED = 0; // 未指定
+  AGENT_TYPE_REACT = 1;       // ReAct Agent
+}
+
+// Agent ReAct Agent配置
+message Agent {
+  uint32 id = 1;                   // 主键ID
+  string agent_id = 2;             // Agent唯一标识(eg. agent_0x1234)
+  string agent_name = 3;           // Agent名称
+  string agent_type = 4;           // Agent类型(ReAct)
+  string description = 5;          // Agent描述
+  string using_provider_id = 6;   // 使用的Provider ID
+  string using_model = 7;          // 使用的模型
+
+  // Prompt配置
+  string sys_prompt = 8;           // 系统提示词
+  string ai_prompt = 9;            // AI助手提示词
+
+  // Model参数配置
+  string model = 10;               // 模型名称
+  double temperature = 11;         // 温度参数(0.0-1.0)
+  int32 max_tokens = 12;           // 最大token数
+  double top_p = 13;               // Top P参数
+  int32 top_k = 14;                // Top K参数
+
+  // 时间戳
+  string created_at = 15;          // 创建时间
+  string updated_at = 16;          // 更新时间
+}
+
+// CondAgent Agent查询条件
+message CondAgent {
+  string agent_id = 1; // Agent唯一标识
+}
+
+// SaveAgentReq 保存Agent请求
+message SaveAgentReq {
+  Agent agent = 1;
+}
+
+// SaveAgentRsp 保存Agent响应
+message SaveAgentRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
+}
+
+// UpdateAgentReq 更新Agent请求
+message UpdateAgentReq {
+  string agent_id = 1;  // Agent唯一标识
+  Agent agent = 2;      // 更新的Agent信息
+}
+
+// UpdateAgentRsp 更新Agent响应
+message UpdateAgentRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
+}
+
+// GetAgentListsReq 查询Agent列表请求
+message GetAgentListsReq {
+  CondAgent condition = 1; // 查询条件(可选)
+}
+
+// GetAgentListsRsp 查询Agent列表响应
+message GetAgentListsRsp {
+  repeated Agent agents = 1;
+}
+
+// GetAgentReq 获取指定Agent请求
+message GetAgentReq {
+  string agent_id = 1; // Agent唯一标识
+}
+
+// GetAgentRsp 获取指定Agent响应
+message GetAgentRsp {
+  Agent agent = 1;
+}
+
+// DeleteAgentsReq 删除Agents请求
+message DeleteAgentsReq {
+  repeated string agent_ids = 1; // Agent唯一标识列表
+}
+
+// DeleteAgentsRsp 删除Agents响应
+message DeleteAgentsRsp {
+  // 空响应，通过grpc-gateway中间件统一处理
+}
