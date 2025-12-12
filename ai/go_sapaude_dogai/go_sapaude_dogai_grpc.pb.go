@@ -19,8 +19,6 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GoSapaudeDogAI_LoadAppSettings_FullMethodName          = "/go_sapaude_dogai.GoSapaudeDogAI/LoadAppSettings"
-	GoSapaudeDogAI_SaveAppSettings_FullMethodName          = "/go_sapaude_dogai.GoSapaudeDogAI/SaveAppSettings"
 	GoSapaudeDogAI_GetGeneralSettings_FullMethodName       = "/go_sapaude_dogai.GoSapaudeDogAI/GetGeneralSettings"
 	GoSapaudeDogAI_SaveGeneralSettings_FullMethodName      = "/go_sapaude_dogai.GoSapaudeDogAI/SaveGeneralSettings"
 	GoSapaudeDogAI_SaveProvider_FullMethodName             = "/go_sapaude_dogai.GoSapaudeDogAI/SaveProvider"
@@ -43,11 +41,7 @@ const (
 //
 // Sapaude DOGAI服务
 type GoSapaudeDogAIClient interface {
-	// 加载应用配置
-	LoadAppSettings(ctx context.Context, in *LoadAppSettingsReq, opts ...grpc.CallOption) (*LoadAppSettingsRsp, error)
-	// 保存应用配置
-	SaveAppSettings(ctx context.Context, in *SaveAppSettingsReq, opts ...grpc.CallOption) (*SaveAppSettingsRsp, error)
-	// 获取通用配置(兼容旧接口)
+	// ---- Setting配置  ----
 	GetGeneralSettings(ctx context.Context, in *GetGeneralSettingsReq, opts ...grpc.CallOption) (*GetGeneralSettingsRsp, error)
 	// 保存通用配置(兼容旧接口)
 	SaveGeneralSettings(ctx context.Context, in *SaveGeneralSettingsReq, opts ...grpc.CallOption) (*SaveGeneralSettingsRsp, error)
@@ -83,26 +77,6 @@ type goSapaudeDogAIClient struct {
 
 func NewGoSapaudeDogAIClient(cc grpc.ClientConnInterface) GoSapaudeDogAIClient {
 	return &goSapaudeDogAIClient{cc}
-}
-
-func (c *goSapaudeDogAIClient) LoadAppSettings(ctx context.Context, in *LoadAppSettingsReq, opts ...grpc.CallOption) (*LoadAppSettingsRsp, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoadAppSettingsRsp)
-	err := c.cc.Invoke(ctx, GoSapaudeDogAI_LoadAppSettings_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *goSapaudeDogAIClient) SaveAppSettings(ctx context.Context, in *SaveAppSettingsReq, opts ...grpc.CallOption) (*SaveAppSettingsRsp, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SaveAppSettingsRsp)
-	err := c.cc.Invoke(ctx, GoSapaudeDogAI_SaveAppSettings_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *goSapaudeDogAIClient) GetGeneralSettings(ctx context.Context, in *GetGeneralSettingsReq, opts ...grpc.CallOption) (*GetGeneralSettingsRsp, error) {
@@ -251,11 +225,7 @@ func (c *goSapaudeDogAIClient) GetAvailableModels(ctx context.Context, in *GetAv
 //
 // Sapaude DOGAI服务
 type GoSapaudeDogAIServer interface {
-	// 加载应用配置
-	LoadAppSettings(context.Context, *LoadAppSettingsReq) (*LoadAppSettingsRsp, error)
-	// 保存应用配置
-	SaveAppSettings(context.Context, *SaveAppSettingsReq) (*SaveAppSettingsRsp, error)
-	// 获取通用配置(兼容旧接口)
+	// ---- Setting配置  ----
 	GetGeneralSettings(context.Context, *GetGeneralSettingsReq) (*GetGeneralSettingsRsp, error)
 	// 保存通用配置(兼容旧接口)
 	SaveGeneralSettings(context.Context, *SaveGeneralSettingsReq) (*SaveGeneralSettingsRsp, error)
@@ -293,12 +263,6 @@ type GoSapaudeDogAIServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGoSapaudeDogAIServer struct{}
 
-func (UnimplementedGoSapaudeDogAIServer) LoadAppSettings(context.Context, *LoadAppSettingsReq) (*LoadAppSettingsRsp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LoadAppSettings not implemented")
-}
-func (UnimplementedGoSapaudeDogAIServer) SaveAppSettings(context.Context, *SaveAppSettingsReq) (*SaveAppSettingsRsp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SaveAppSettings not implemented")
-}
 func (UnimplementedGoSapaudeDogAIServer) GetGeneralSettings(context.Context, *GetGeneralSettingsReq) (*GetGeneralSettingsRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGeneralSettings not implemented")
 }
@@ -360,42 +324,6 @@ func RegisterGoSapaudeDogAIServer(s grpc.ServiceRegistrar, srv GoSapaudeDogAISer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&GoSapaudeDogAI_ServiceDesc, srv)
-}
-
-func _GoSapaudeDogAI_LoadAppSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoadAppSettingsReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GoSapaudeDogAIServer).LoadAppSettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GoSapaudeDogAI_LoadAppSettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GoSapaudeDogAIServer).LoadAppSettings(ctx, req.(*LoadAppSettingsReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GoSapaudeDogAI_SaveAppSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SaveAppSettingsReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GoSapaudeDogAIServer).SaveAppSettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GoSapaudeDogAI_SaveAppSettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GoSapaudeDogAIServer).SaveAppSettings(ctx, req.(*SaveAppSettingsReq))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _GoSapaudeDogAI_GetGeneralSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -657,14 +585,6 @@ var GoSapaudeDogAI_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "go_sapaude_dogai.GoSapaudeDogAI",
 	HandlerType: (*GoSapaudeDogAIServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "LoadAppSettings",
-			Handler:    _GoSapaudeDogAI_LoadAppSettings_Handler,
-		},
-		{
-			MethodName: "SaveAppSettings",
-			Handler:    _GoSapaudeDogAI_SaveAppSettings_Handler,
-		},
 		{
 			MethodName: "GetGeneralSettings",
 			Handler:    _GoSapaudeDogAI_GetGeneralSettings_Handler,

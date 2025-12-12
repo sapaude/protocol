@@ -17,27 +17,19 @@ message GetAvailableModelsRsp {
   repeated string models = 1;  // 可用的模型ID列表
 }
 
+message CallAIStreamReq {
+  string agent_id = 1;  // 用户选中的agent_id
+  string question = 2;  // 用户问题
+}
+
+message CallAIStreamRsp {
+
+}
+
 // Sapaude DOGAI服务
 service GoSapaudeDogAI {
 
   // ---- Setting配置  ----
-
-  // 加载应用配置
-  rpc LoadAppSettings(LoadAppSettingsReq) returns (LoadAppSettingsRsp) {
-    option (google.api.http) = {
-      get: "/LoadAppSettings"
-    };
-  }
-
-  // 保存应用配置
-  rpc SaveAppSettings(SaveAppSettingsReq) returns (SaveAppSettingsRsp) {
-    option (google.api.http) = {
-      post: "/SaveAppSettings"
-      body: "*"
-    };
-  }
-
-  // 获取通用配置(兼容旧接口)
   rpc GetGeneralSettings(GetGeneralSettingsReq) returns (GetGeneralSettingsRsp) {
     option (google.api.http) = {
       get: "/GetGeneralSettings"
@@ -151,26 +143,11 @@ service GoSapaudeDogAI {
     };
   }
 
-  //  // 登录
-  //  rpc Login(LoginReq) returns (LoginRsp) {
-  //    option (google.api.http) = {
-  //      post: "/users/login" // 定义 HTTP POST 请求到 /users/login
-  //      body: "*" // 请求体包含所有字段
-  //    };
-  //  }
-  //
-  //  // 注册用户
-  //  rpc RegisterUser(RegisterUserReq) returns (RegisterUserRsp) {
-  //    option (google.api.http) = {
-  //      post: "/users/register" // 定义 HTTP POST 请求到 /users/register
-  //      body: "*"
-  //    };
-  //  }
-  //
-  //  // 获取用户
-  //  rpc GetUser(GetUserReq) returns (GetUserResponseRsp) {
-  //    option (google.api.http) = {
-  //      get: "/users/{uid}" // 定义 HTTP GET 请求到 /users/{uid}
-  //    };
-  //  }
+  // AI对话
+  rpc CallAIStream(CallAIStreamReq) returns (CallAIStreamRsp) {
+    option (google.api.http) = {
+      post: "/CallAIStream"
+      body: "*"
+    };
+  }
 }

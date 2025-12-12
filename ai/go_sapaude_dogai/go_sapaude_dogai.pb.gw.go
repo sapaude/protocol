@@ -35,54 +35,6 @@ var (
 	_ = metadata.Join
 )
 
-func request_GoSapaudeDogAI_LoadAppSettings_0(ctx context.Context, marshaler runtime.Marshaler, client GoSapaudeDogAIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq LoadAppSettingsReq
-		metadata runtime.ServerMetadata
-	)
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	msg, err := client.LoadAppSettings(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_GoSapaudeDogAI_LoadAppSettings_0(ctx context.Context, marshaler runtime.Marshaler, server GoSapaudeDogAIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq LoadAppSettingsReq
-		metadata runtime.ServerMetadata
-	)
-	msg, err := server.LoadAppSettings(ctx, &protoReq)
-	return msg, metadata, err
-}
-
-func request_GoSapaudeDogAI_SaveAppSettings_0(ctx context.Context, marshaler runtime.Marshaler, client GoSapaudeDogAIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq SaveAppSettingsReq
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
-	msg, err := client.SaveAppSettings(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_GoSapaudeDogAI_SaveAppSettings_0(ctx context.Context, marshaler runtime.Marshaler, server GoSapaudeDogAIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq SaveAppSettingsReq
-		metadata runtime.ServerMetadata
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := server.SaveAppSettings(ctx, &protoReq)
-	return msg, metadata, err
-}
-
 func request_GoSapaudeDogAI_GetGeneralSettings_0(ctx context.Context, marshaler runtime.Marshaler, client GoSapaudeDogAIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetGeneralSettingsReq
@@ -497,46 +449,6 @@ func local_request_GoSapaudeDogAI_GetAvailableModels_0(ctx context.Context, mars
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterGoSapaudeDogAIHandlerFromEndpoint instead.
 // GRPC interceptors will not work for this type of registration. To use interceptors, you must use the "runtime.WithMiddlewares" option in the "runtime.NewServeMux" call.
 func RegisterGoSapaudeDogAIHandlerServer(ctx context.Context, mux *runtime.ServeMux, server GoSapaudeDogAIServer) error {
-	mux.Handle(http.MethodGet, pattern_GoSapaudeDogAI_LoadAppSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/go_sapaude_dogai.GoSapaudeDogAI/LoadAppSettings", runtime.WithHTTPPathPattern("/LoadAppSettings"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_GoSapaudeDogAI_LoadAppSettings_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_GoSapaudeDogAI_LoadAppSettings_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_GoSapaudeDogAI_SaveAppSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/go_sapaude_dogai.GoSapaudeDogAI/SaveAppSettings", runtime.WithHTTPPathPattern("/SaveAppSettings"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_GoSapaudeDogAI_SaveAppSettings_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_GoSapaudeDogAI_SaveAppSettings_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
 	mux.Handle(http.MethodGet, pattern_GoSapaudeDogAI_GetGeneralSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -857,40 +769,6 @@ func RegisterGoSapaudeDogAIHandler(ctx context.Context, mux *runtime.ServeMux, c
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "GoSapaudeDogAIClient" to call the correct interceptors. This client ignores the HTTP middlewares.
 func RegisterGoSapaudeDogAIHandlerClient(ctx context.Context, mux *runtime.ServeMux, client GoSapaudeDogAIClient) error {
-	mux.Handle(http.MethodGet, pattern_GoSapaudeDogAI_LoadAppSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/go_sapaude_dogai.GoSapaudeDogAI/LoadAppSettings", runtime.WithHTTPPathPattern("/LoadAppSettings"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_GoSapaudeDogAI_LoadAppSettings_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_GoSapaudeDogAI_LoadAppSettings_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_GoSapaudeDogAI_SaveAppSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/go_sapaude_dogai.GoSapaudeDogAI/SaveAppSettings", runtime.WithHTTPPathPattern("/SaveAppSettings"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_GoSapaudeDogAI_SaveAppSettings_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_GoSapaudeDogAI_SaveAppSettings_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
 	mux.Handle(http.MethodGet, pattern_GoSapaudeDogAI_GetGeneralSettings_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -1133,8 +1011,6 @@ func RegisterGoSapaudeDogAIHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_GoSapaudeDogAI_LoadAppSettings_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"LoadAppSettings"}, ""))
-	pattern_GoSapaudeDogAI_SaveAppSettings_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"SaveAppSettings"}, ""))
 	pattern_GoSapaudeDogAI_GetGeneralSettings_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"GetGeneralSettings"}, ""))
 	pattern_GoSapaudeDogAI_SaveGeneralSettings_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"SaveGeneralSettings"}, ""))
 	pattern_GoSapaudeDogAI_SaveProvider_0             = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"SaveProvider"}, ""))
@@ -1152,8 +1028,6 @@ var (
 )
 
 var (
-	forward_GoSapaudeDogAI_LoadAppSettings_0          = runtime.ForwardResponseMessage
-	forward_GoSapaudeDogAI_SaveAppSettings_0          = runtime.ForwardResponseMessage
 	forward_GoSapaudeDogAI_GetGeneralSettings_0       = runtime.ForwardResponseMessage
 	forward_GoSapaudeDogAI_SaveGeneralSettings_0      = runtime.ForwardResponseMessage
 	forward_GoSapaudeDogAI_SaveProvider_0             = runtime.ForwardResponseMessage

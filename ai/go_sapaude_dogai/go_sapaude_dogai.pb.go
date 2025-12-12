@@ -119,10 +119,8 @@ const file_go_sapaude_dogai_proto_rawDesc = "" +
 	"\vprovider_id\x18\x01 \x01(\tR\n" +
 	"providerId\"/\n" +
 	"\x15GetAvailableModelsRsp\x12\x16\n" +
-	"\x06models\x18\x01 \x03(\tR\x06models2\xc4\x0f\n" +
-	"\x0eGoSapaudeDogAI\x12w\n" +
-	"\x0fLoadAppSettings\x12$.go_sapaude_dogai.LoadAppSettingsReq\x1a$.go_sapaude_dogai.LoadAppSettingsRsp\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/LoadAppSettings\x12z\n" +
-	"\x0fSaveAppSettings\x12$.go_sapaude_dogai.SaveAppSettingsReq\x1a$.go_sapaude_dogai.SaveAppSettingsRsp\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/SaveAppSettings\x12\x83\x01\n" +
+	"\x06models\x18\x01 \x03(\tR\x06models2\xcf\r\n" +
+	"\x0eGoSapaudeDogAI\x12\x83\x01\n" +
 	"\x12GetGeneralSettings\x12'.go_sapaude_dogai.GetGeneralSettingsReq\x1a'.go_sapaude_dogai.GetGeneralSettingsRsp\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/GetGeneralSettings\x12\x8a\x01\n" +
 	"\x13SaveGeneralSettings\x12(.go_sapaude_dogai.SaveGeneralSettingsReq\x1a(.go_sapaude_dogai.SaveGeneralSettingsRsp\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/SaveGeneralSettings\x12n\n" +
 	"\fSaveProvider\x12!.go_sapaude_dogai.SaveProviderReq\x1a!.go_sapaude_dogai.SaveProviderRsp\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/SaveProvider\x12v\n" +
@@ -155,72 +153,64 @@ var file_go_sapaude_dogai_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_go_sapaude_dogai_proto_goTypes = []any{
 	(*GetAvailableModelsReq)(nil),       // 0: go_sapaude_dogai.GetAvailableModelsReq
 	(*GetAvailableModelsRsp)(nil),       // 1: go_sapaude_dogai.GetAvailableModelsRsp
-	(*LoadAppSettingsReq)(nil),          // 2: go_sapaude_dogai.LoadAppSettingsReq
-	(*SaveAppSettingsReq)(nil),          // 3: go_sapaude_dogai.SaveAppSettingsReq
-	(*GetGeneralSettingsReq)(nil),       // 4: go_sapaude_dogai.GetGeneralSettingsReq
-	(*SaveGeneralSettingsReq)(nil),      // 5: go_sapaude_dogai.SaveGeneralSettingsReq
-	(*SaveProviderReq)(nil),             // 6: go_sapaude_dogai.SaveProviderReq
-	(*UpdateProviderReq)(nil),           // 7: go_sapaude_dogai.UpdateProviderReq
-	(*GetProviderListsReq)(nil),         // 8: go_sapaude_dogai.GetProviderListsReq
-	(*GetProviderReq)(nil),              // 9: go_sapaude_dogai.GetProviderReq
-	(*DeleteProvidersReq)(nil),          // 10: go_sapaude_dogai.DeleteProvidersReq
-	(*GetProviderSupportModelsReq)(nil), // 11: go_sapaude_dogai.GetProviderSupportModelsReq
-	(*SaveAgentReq)(nil),                // 12: go_sapaude_dogai.SaveAgentReq
-	(*UpdateAgentReq)(nil),              // 13: go_sapaude_dogai.UpdateAgentReq
-	(*GetAgentListsReq)(nil),            // 14: go_sapaude_dogai.GetAgentListsReq
-	(*GetAgentReq)(nil),                 // 15: go_sapaude_dogai.GetAgentReq
-	(*DeleteAgentsReq)(nil),             // 16: go_sapaude_dogai.DeleteAgentsReq
-	(*LoadAppSettingsRsp)(nil),          // 17: go_sapaude_dogai.LoadAppSettingsRsp
-	(*SaveAppSettingsRsp)(nil),          // 18: go_sapaude_dogai.SaveAppSettingsRsp
-	(*GetGeneralSettingsRsp)(nil),       // 19: go_sapaude_dogai.GetGeneralSettingsRsp
-	(*SaveGeneralSettingsRsp)(nil),      // 20: go_sapaude_dogai.SaveGeneralSettingsRsp
-	(*SaveProviderRsp)(nil),             // 21: go_sapaude_dogai.SaveProviderRsp
-	(*UpdateProviderRsp)(nil),           // 22: go_sapaude_dogai.UpdateProviderRsp
-	(*GetProviderListsRsp)(nil),         // 23: go_sapaude_dogai.GetProviderListsRsp
-	(*GetProviderRsp)(nil),              // 24: go_sapaude_dogai.GetProviderRsp
-	(*DeleteProvidersRsp)(nil),          // 25: go_sapaude_dogai.DeleteProvidersRsp
-	(*GetProviderSupportModelsRsp)(nil), // 26: go_sapaude_dogai.GetProviderSupportModelsRsp
-	(*SaveAgentRsp)(nil),                // 27: go_sapaude_dogai.SaveAgentRsp
-	(*UpdateAgentRsp)(nil),              // 28: go_sapaude_dogai.UpdateAgentRsp
-	(*GetAgentListsRsp)(nil),            // 29: go_sapaude_dogai.GetAgentListsRsp
-	(*GetAgentRsp)(nil),                 // 30: go_sapaude_dogai.GetAgentRsp
-	(*DeleteAgentsRsp)(nil),             // 31: go_sapaude_dogai.DeleteAgentsRsp
+	(*GetGeneralSettingsReq)(nil),       // 2: go_sapaude_dogai.GetGeneralSettingsReq
+	(*SaveGeneralSettingsReq)(nil),      // 3: go_sapaude_dogai.SaveGeneralSettingsReq
+	(*SaveProviderReq)(nil),             // 4: go_sapaude_dogai.SaveProviderReq
+	(*UpdateProviderReq)(nil),           // 5: go_sapaude_dogai.UpdateProviderReq
+	(*GetProviderListsReq)(nil),         // 6: go_sapaude_dogai.GetProviderListsReq
+	(*GetProviderReq)(nil),              // 7: go_sapaude_dogai.GetProviderReq
+	(*DeleteProvidersReq)(nil),          // 8: go_sapaude_dogai.DeleteProvidersReq
+	(*GetProviderSupportModelsReq)(nil), // 9: go_sapaude_dogai.GetProviderSupportModelsReq
+	(*SaveAgentReq)(nil),                // 10: go_sapaude_dogai.SaveAgentReq
+	(*UpdateAgentReq)(nil),              // 11: go_sapaude_dogai.UpdateAgentReq
+	(*GetAgentListsReq)(nil),            // 12: go_sapaude_dogai.GetAgentListsReq
+	(*GetAgentReq)(nil),                 // 13: go_sapaude_dogai.GetAgentReq
+	(*DeleteAgentsReq)(nil),             // 14: go_sapaude_dogai.DeleteAgentsReq
+	(*GetGeneralSettingsRsp)(nil),       // 15: go_sapaude_dogai.GetGeneralSettingsRsp
+	(*SaveGeneralSettingsRsp)(nil),      // 16: go_sapaude_dogai.SaveGeneralSettingsRsp
+	(*SaveProviderRsp)(nil),             // 17: go_sapaude_dogai.SaveProviderRsp
+	(*UpdateProviderRsp)(nil),           // 18: go_sapaude_dogai.UpdateProviderRsp
+	(*GetProviderListsRsp)(nil),         // 19: go_sapaude_dogai.GetProviderListsRsp
+	(*GetProviderRsp)(nil),              // 20: go_sapaude_dogai.GetProviderRsp
+	(*DeleteProvidersRsp)(nil),          // 21: go_sapaude_dogai.DeleteProvidersRsp
+	(*GetProviderSupportModelsRsp)(nil), // 22: go_sapaude_dogai.GetProviderSupportModelsRsp
+	(*SaveAgentRsp)(nil),                // 23: go_sapaude_dogai.SaveAgentRsp
+	(*UpdateAgentRsp)(nil),              // 24: go_sapaude_dogai.UpdateAgentRsp
+	(*GetAgentListsRsp)(nil),            // 25: go_sapaude_dogai.GetAgentListsRsp
+	(*GetAgentRsp)(nil),                 // 26: go_sapaude_dogai.GetAgentRsp
+	(*DeleteAgentsRsp)(nil),             // 27: go_sapaude_dogai.DeleteAgentsRsp
 }
 var file_go_sapaude_dogai_proto_depIdxs = []int32{
-	2,  // 0: go_sapaude_dogai.GoSapaudeDogAI.LoadAppSettings:input_type -> go_sapaude_dogai.LoadAppSettingsReq
-	3,  // 1: go_sapaude_dogai.GoSapaudeDogAI.SaveAppSettings:input_type -> go_sapaude_dogai.SaveAppSettingsReq
-	4,  // 2: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:input_type -> go_sapaude_dogai.GetGeneralSettingsReq
-	5,  // 3: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:input_type -> go_sapaude_dogai.SaveGeneralSettingsReq
-	6,  // 4: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:input_type -> go_sapaude_dogai.SaveProviderReq
-	7,  // 5: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:input_type -> go_sapaude_dogai.UpdateProviderReq
-	8,  // 6: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:input_type -> go_sapaude_dogai.GetProviderListsReq
-	9,  // 7: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:input_type -> go_sapaude_dogai.GetProviderReq
-	10, // 8: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:input_type -> go_sapaude_dogai.DeleteProvidersReq
-	11, // 9: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:input_type -> go_sapaude_dogai.GetProviderSupportModelsReq
-	12, // 10: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:input_type -> go_sapaude_dogai.SaveAgentReq
-	13, // 11: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:input_type -> go_sapaude_dogai.UpdateAgentReq
-	14, // 12: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:input_type -> go_sapaude_dogai.GetAgentListsReq
-	15, // 13: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:input_type -> go_sapaude_dogai.GetAgentReq
-	16, // 14: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:input_type -> go_sapaude_dogai.DeleteAgentsReq
-	0,  // 15: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:input_type -> go_sapaude_dogai.GetAvailableModelsReq
-	17, // 16: go_sapaude_dogai.GoSapaudeDogAI.LoadAppSettings:output_type -> go_sapaude_dogai.LoadAppSettingsRsp
-	18, // 17: go_sapaude_dogai.GoSapaudeDogAI.SaveAppSettings:output_type -> go_sapaude_dogai.SaveAppSettingsRsp
-	19, // 18: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:output_type -> go_sapaude_dogai.GetGeneralSettingsRsp
-	20, // 19: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:output_type -> go_sapaude_dogai.SaveGeneralSettingsRsp
-	21, // 20: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:output_type -> go_sapaude_dogai.SaveProviderRsp
-	22, // 21: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:output_type -> go_sapaude_dogai.UpdateProviderRsp
-	23, // 22: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:output_type -> go_sapaude_dogai.GetProviderListsRsp
-	24, // 23: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:output_type -> go_sapaude_dogai.GetProviderRsp
-	25, // 24: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:output_type -> go_sapaude_dogai.DeleteProvidersRsp
-	26, // 25: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:output_type -> go_sapaude_dogai.GetProviderSupportModelsRsp
-	27, // 26: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:output_type -> go_sapaude_dogai.SaveAgentRsp
-	28, // 27: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:output_type -> go_sapaude_dogai.UpdateAgentRsp
-	29, // 28: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:output_type -> go_sapaude_dogai.GetAgentListsRsp
-	30, // 29: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:output_type -> go_sapaude_dogai.GetAgentRsp
-	31, // 30: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:output_type -> go_sapaude_dogai.DeleteAgentsRsp
-	1,  // 31: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:output_type -> go_sapaude_dogai.GetAvailableModelsRsp
-	16, // [16:32] is the sub-list for method output_type
-	0,  // [0:16] is the sub-list for method input_type
+	2,  // 0: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:input_type -> go_sapaude_dogai.GetGeneralSettingsReq
+	3,  // 1: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:input_type -> go_sapaude_dogai.SaveGeneralSettingsReq
+	4,  // 2: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:input_type -> go_sapaude_dogai.SaveProviderReq
+	5,  // 3: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:input_type -> go_sapaude_dogai.UpdateProviderReq
+	6,  // 4: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:input_type -> go_sapaude_dogai.GetProviderListsReq
+	7,  // 5: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:input_type -> go_sapaude_dogai.GetProviderReq
+	8,  // 6: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:input_type -> go_sapaude_dogai.DeleteProvidersReq
+	9,  // 7: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:input_type -> go_sapaude_dogai.GetProviderSupportModelsReq
+	10, // 8: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:input_type -> go_sapaude_dogai.SaveAgentReq
+	11, // 9: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:input_type -> go_sapaude_dogai.UpdateAgentReq
+	12, // 10: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:input_type -> go_sapaude_dogai.GetAgentListsReq
+	13, // 11: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:input_type -> go_sapaude_dogai.GetAgentReq
+	14, // 12: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:input_type -> go_sapaude_dogai.DeleteAgentsReq
+	0,  // 13: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:input_type -> go_sapaude_dogai.GetAvailableModelsReq
+	15, // 14: go_sapaude_dogai.GoSapaudeDogAI.GetGeneralSettings:output_type -> go_sapaude_dogai.GetGeneralSettingsRsp
+	16, // 15: go_sapaude_dogai.GoSapaudeDogAI.SaveGeneralSettings:output_type -> go_sapaude_dogai.SaveGeneralSettingsRsp
+	17, // 16: go_sapaude_dogai.GoSapaudeDogAI.SaveProvider:output_type -> go_sapaude_dogai.SaveProviderRsp
+	18, // 17: go_sapaude_dogai.GoSapaudeDogAI.UpdateProvider:output_type -> go_sapaude_dogai.UpdateProviderRsp
+	19, // 18: go_sapaude_dogai.GoSapaudeDogAI.GetProviderLists:output_type -> go_sapaude_dogai.GetProviderListsRsp
+	20, // 19: go_sapaude_dogai.GoSapaudeDogAI.GetProvider:output_type -> go_sapaude_dogai.GetProviderRsp
+	21, // 20: go_sapaude_dogai.GoSapaudeDogAI.DeleteProviders:output_type -> go_sapaude_dogai.DeleteProvidersRsp
+	22, // 21: go_sapaude_dogai.GoSapaudeDogAI.GetProviderSupportModels:output_type -> go_sapaude_dogai.GetProviderSupportModelsRsp
+	23, // 22: go_sapaude_dogai.GoSapaudeDogAI.SaveAgent:output_type -> go_sapaude_dogai.SaveAgentRsp
+	24, // 23: go_sapaude_dogai.GoSapaudeDogAI.UpdateAgent:output_type -> go_sapaude_dogai.UpdateAgentRsp
+	25, // 24: go_sapaude_dogai.GoSapaudeDogAI.GetAgentLists:output_type -> go_sapaude_dogai.GetAgentListsRsp
+	26, // 25: go_sapaude_dogai.GoSapaudeDogAI.GetAgent:output_type -> go_sapaude_dogai.GetAgentRsp
+	27, // 26: go_sapaude_dogai.GoSapaudeDogAI.DeleteAgents:output_type -> go_sapaude_dogai.DeleteAgentsRsp
+	1,  // 27: go_sapaude_dogai.GoSapaudeDogAI.GetAvailableModels:output_type -> go_sapaude_dogai.GetAvailableModelsRsp
+	14, // [14:28] is the sub-list for method output_type
+	0,  // [0:14] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
